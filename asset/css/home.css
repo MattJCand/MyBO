@@ -46,10 +46,25 @@
   margin-top: 50px;
 }
 
-
 //HomePage
 
-#linkBo{
-  display: block;
-  border:3px solid green;
+#sectionPages{
+  background-color: white;
 }
+
+#sectionPages .container{
+  background-color: white;
+    display: flex;
+      justify-content: space-around
+
+
+}
+
+#sectionPages .container div{
+  height: 200px;
+  width: 200px;
+  margin: 15px 10px;
+  background-color: red
+}
+
+
