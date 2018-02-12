@@ -1,3 +1,4 @@
+// Login Page
 
 .login-page {
   width: 360px;
@@ -41,7 +42,14 @@
   background: #43A047;
 }
 
-#homeLogo{
-
+.homeLogo{
+  margin-top: 50px;
 }
 
+
+//HomePage
+
+#linkBo{
+  display: block;
+  border:3px solid green;
+}
