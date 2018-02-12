@@ -1,0 +1,121 @@
+
+
+
+/**/
+
+
+/* BANNIERE */
+
+#caroussel-banniere{
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+
+}
+
+/*#caroussel-banniere .container{
+  max-width: 1080px;
+  width: 100%;
+  margin: auto;
+}*/
+
+.slick-dots {
+    bottom: 15px;
+}
+
+.slick-dots li button:before {
+    color: #fff;
+}
+
+
+.slick-dotted.slick-slider {
+    margin-bottom: 0px;
+}
+
+.slick-next,.slick-prev{
+  z-index: 2
+}
+
+.slick-next {
+  right: 15px;
+}
+.slick-prev{
+  left: 15px;
+}
+
+.banniere-japonnais{
+  background: url('../img/banniere1.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/*
+.bloc-banniere{
+  height: 300px;
+}
+*/
+.bloc-banniere .container div{
+  height: 300px;
+  width: 50%;
+  display: table-cell;
+  color: #fff
+}
+
+
+
+.bloc-titre-banniere h1{
+  
+}
+
+
+.bloc-texte-banniere p{
+
+}
+
+
+/**************/
+
+
+
+
+
+
+#sectionCours{
+  background-color: lightgrey;
+}
+
+#sectionCours .container{
+  background-color: lightgrey;
+    display: flex;
+      justify-content: space-around
+
+
+}
+
+#sectionCours .container div{
+  height: 200px;
+  width: 200px;
+  margin: 15px 10px;
+  background-color: red
+}
+
+
+
+
+
+
+
+
+
+
+#social{
+  height: 500px;
+  width: 100%;
+  background-color: grey;
+}
+
+#actu{
+  height: 400px;
+  width: 100%;
+  background-color: purple;
+  text-align: center
+}

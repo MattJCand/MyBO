@@ -1,0 +1,38 @@
+// DESKTOP
+
+.sectionAbout{
+  height: 200px;
+  width: 400px;
+  columns: row;
+  margin-top: 20%;
+}
+
+.containerAbout{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.imageAbout{
+ height: 200px;
+ width: 200px;
+ border:3px solid pink;
+}
+
+
+.aboutIntro{
+ height: 200px;
+ width: 100%;
+  border:3px solid orange;
+}
+
+.aboutDescription{
+ height: 200px;
+ width: 500px;
+  border:3px solid purple;
+}
+
+// TABLETTE
+
+// MOBILE

@@ -1,0 +1,32 @@
+// DESKTOP
+
+.sectionActu{
+  height: 200px;
+  width: 400px;
+  columns: row;
+  border:3px solid green;
+  margin-top: 20%;
+}
+
+.containerActu{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.imageActu{
+ height: 200px;
+ width: 200px;
+ border:3px solid pink;
+}
+
+.actuDescription{
+ height: 200px;
+ width: 500px;
+  border:3px solid orange;
+}
+
+// TABLETTE
+
+// MOBILE

@@ -1,0 +1,14 @@
+footer{
+	height: 300px;
+	width: 100%;
+	background: #333333;
+	color: #fff;
+}
+
+footer .container{
+	background-color: inherit;
+}
+
+.bold{
+  font-weight: bold;
+}
