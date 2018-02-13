@@ -1,10 +1,7 @@
-<?php include "templates/header.php"; ?>
-
 <div class="align homeLogo">
   <img src="asset/img/logo_final.png" alt="logo Planete Manga">
   <h1 class="align"> Accueil Back Office </h1>
 </div>
-
 
 <section id="sectionPages">
   <div class="container">
@@ -28,6 +25,10 @@
     <a href="#"><div id="press"></div></a>
   </div>
 </section>
+
+
+<a href="admin/deconnexion.php">Déconnexion</a>
+
 
 
 <?php include "templates/footer.php"; ?>
