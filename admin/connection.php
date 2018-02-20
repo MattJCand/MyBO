@@ -24,7 +24,7 @@
          session_start();
          $_SESSION['login'] = $_POST['login'];
          $_SESSION['mdp'] = $_POST['mdp'];
-         header('Location: home.php');
+         header('Location: pages/home/home.php');
        } else {
          header('Location: index.php');
        }
