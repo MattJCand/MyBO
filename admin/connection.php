@@ -1,36 +1,32 @@
 
 <?php include "templates/pdo.php"; ?>
-<div class="conteneur">
-<fieldset>
-  <form method="post" action="home.php">
-    <label>Nom utilisateur</label>
-    <input type="text" name="pseudo"><br>
-    <label>Mot de passe</label>
-    <input type="text" name="mdp"><br>
-    <input type="submit" value="valider" name="valider" id="valider">
-  </form>
-</fieldset>
-<hr>
-<fieldset>
+
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" method= "POST" action="#">
+      <input  required="required" type="text" placeholder="Nom utilisateur" name="login"/>
+      <input  required="required" type="password" placeholder="Mot de passe" name="mdp"/>
+      <button type="submit" name="valider" id="valider" >Valider</button>
+    </form>
+  </div>
+</div>
   <?php
-    if( isset($_POST['pseudo']) && isset($_POST['mdp'])){
-        $pseudo = $_POST['pseudo'];
+    if( isset($_POST['login']) && isset($_POST['mdp'])){
+        $login = $_POST['login'];
         $mdp = $_POST['mdp'];
-        $req = "SELECT * FROM login WHERE pseudo = :pseudo AND mdp = :mdp";
+        $req = "SELECT * FROM administrateur WHERE login = :login AND mdp = :mdp";
         $resultat = $pdo->prepare($req);
-        $resultat->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+        $resultat->bindParam(':login', $login, PDO::PARAM_STR);
         $resultat->bindParam(':mdp', $mdp, PDO::PARAM_STR);
         $resultat->execute();
 
       if ( $resultat->rowCount() === 1){
-         $user = $resultat->fetch(PDO::FETCH_ASSOC);
-         echo '<h1>Bonjour ' . $user['pseudo'] . ', vous êtes connecté</h1>';
-         echo 'Pseudo : '. $user['pseudo'] . '<br>';
-         echo 'MDP : '. $user['mdp'] . '<br>';
+         session_start();
+         $_SESSION['login'] = $_POST['login'];
+         $_SESSION['mdp'] = $_POST['mdp'];
+         header('Location: home.php');
        } else {
-        echo '<div style="background-color:red; color:white;text-align:center; padding: 20px;">Erreur sur le mot de passe ou le pseudo ! <br>Veuillez recommencer</div> ';
+         header('Location: index.php');
        }
      }
-   ?>
-</fieldset>
-</div>
+  ?>

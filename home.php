@@ -1,14 +1,16 @@
 <?php include "templates/header.php"; ?>
+<?php include "admin/session.php"; ?>
 
 <div class="align homeLogo">
   <img src="asset/img/logo_final.png" alt="logo Planete Manga">
   <h1 class="align"> Accueil Back Office </h1>
+  <a href="admin/logout.php">Deconnexion</a>
 </div>
 
 
 <section id="sectionPages">
   <div class="container">
-    <a href="#"><div id="accueil"></div></a>
+    <a href="accueil.php"><div id="accueil"></div></a>
     <a href="galerie.php"><div id="galerie"></div></a>
     <a href="about.php"><div id="about"></div></a>
   </div>

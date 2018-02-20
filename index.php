@@ -1,4 +1,3 @@
-
 <?php include "templates/header.php"; ?>
 
 <div class="align homeLogo">
