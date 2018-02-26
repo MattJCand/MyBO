@@ -10,24 +10,24 @@
 
 <section id="sectionPages">
   <div class="container">
-    <a href="../accueil/accueil.php"><div id="accueil"></div></a>
-    <a href="../galerie/galerie.php"><div id="galerie"></div></a>
-    <a href="../about/about.php"><div id="about"></div></a>
+    <a href="../accueil/accueil.php"><div id="accueil">Accueil</div></a>
+    <a href="../galerie/galerie.php"><div id="galerie">Galerie</div></a>
+    <a href="../about/about.php"><div id="about">About</div></a>
   </div>
   <div class="container">
-    <a href="../partner/partner.php"><div id="partner"></div></a>
-    <a href="../manga/manga.php"><div id="manga"></div></a>
-    <a href="../draw/draw.php"><div id="dessin"></div></a>
+    <a href="../partner/partner.php"><div id="partner">Partenaire</div></a>
+    <a href="../cours/cours.php"><div id="cours">Cours</div></a>
+    <a href="../member/member.php"><div id="member">Member</div></a>
   </div>
    <div class="container">
-    <a href="../japan/japan.php"><div id="japonais"></div></a>
-    <a href="../member/member.php"><div id="member"></div></a>
-    <a href="../actu/actu.php"><div id="actu"></div></a>
+    <a href="../actu/actu.php"><div id="actu">Actu</div></a>
+    <a href="../press/press.php"><div id="press">Press</div></a>
+    <a href="../event/event.php"><div id="event">Event</div></a>
   </div>
    <div class="container">
-    <a href="../event/event.php"><div id="event"></div></a>
-    <a href="../contact/contact.php"><div id="contact"></div></a>
-    <a href="../press/press.php"><div id="press"></div></a>
+    <a href="../team/team.php"><div id="team">Team</div></a>
+    <a href="../contact/contact.php"><div id="contact">Contact</div></a>
+    <div></div>
   </div>
 </section>
 
