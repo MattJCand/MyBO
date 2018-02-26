@@ -2,14 +2,18 @@
 <?php include "../../admin/session.php"; ?>
 <?php include "../../templates/pdo.php"; ?>
 
-<h1 class="align">Index Page Press</h1>
+<h1 class="align">Index Page Equipe</h1>
 <a href="../home/home.php"><i class="fas fa-home"></i></a>
 
-<?php $reponse = $pdo->query("SELECT presse.titre, presse.dateCrea, presse.description, image.url FROM presse INNER JOIN image ON presse.image_id = image.id" );
+<?php $reponse = $pdo->query("SELECT professeur.nom, professeur.prenom, professeur.profession,professeur.description, professeur.mobile, professeur.email, image.url FROM professeur INNER JOIN image ON professeur.image_id = image.id" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
-    echo $reponse_tableau["titre"]."</br>";
-    echo $reponse_tableau["dateCrea"]."</br>";
+   echo '<div>';
+    echo $reponse_tableau["prenom"]."</br>";
+    echo $reponse_tableau["nom"]."</br>";
+    echo $reponse_tableau["profession"]."</br>";
     echo $reponse_tableau["description"]."</br>";
+    echo $reponse_tableau["mobile"]."</br>";
+    echo $reponse_tableau["email"]."</br>";
     echo $reponse_tableau["url"]."</br>";
     ?>
     <a href="edit.php"><i class="fas fa-edit"></i></a>
@@ -20,4 +24,6 @@
        echo '<hr>';
   }
 ?>
+
+
 <?php include "../../templates/footer.php"; ?>
