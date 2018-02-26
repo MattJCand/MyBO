@@ -4,6 +4,9 @@
 
 <h1 class="align">Index Page Equipe</h1>
 <a href="../home/home.php"><i class="fas fa-home"></i></a>
+<a href="add.php"><i class="fas fa-plus-circle"></i></a>
+
+
 
 <?php $reponse = $pdo->query("SELECT professeur.nom, professeur.prenom, professeur.profession,professeur.description, professeur.mobile, professeur.email, image.url FROM professeur INNER JOIN image ON professeur.image_id = image.id" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
