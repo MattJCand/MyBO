@@ -16,17 +16,15 @@
   </div>
   <div class="container">
     <a href="../partner/partner.php"><div id="partner"></div></a>
-    <a href="../manga/manga.php"><div id="manga"></div></a>
-    <a href="../draw/draw.php"><div id="dessin"></div></a>
+    <a href="../event/event.php"><div id="event"></div></a>
+    <a href="../contact/contact.php"><div id="contact"></div></a>
   </div>
    <div class="container">
-    <a href="../japan/japan.php"><div id="japonais"></div></a>
+    <a href="../cours/cours.php"><div id="cours"></div></a>
     <a href="../member/member.php"><div id="member"></div></a>
     <a href="../actu/actu.php"><div id="actu"></div></a>
   </div>
    <div class="container">
-    <a href="../event/event.php"><div id="event"></div></a>
-    <a href="../contact/contact.php"><div id="contact"></div></a>
     <a href="../press/press.php"><div id="press"></div></a>
   </div>
 </section>
