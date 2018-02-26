@@ -4,6 +4,7 @@
 
 <h1 class="align">Index Page Press</h1>
 <a href="../home/home.php"><i class="fas fa-home"></i></a>
+<a href="add.php"><i class="fas fa-plus-circle"></i></a>
 
 <?php $reponse = $pdo->query("SELECT presse.titre, presse.dateCrea, presse.description, image.url FROM presse INNER JOIN image ON presse.image_id = image.id" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {

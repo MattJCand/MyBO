@@ -4,8 +4,9 @@
 
 <h1 class="align">Index page Page évenements</h1>
 <a href="../home/home.php"><i class="fas fa-home"></i></a>
+<a href="add.php"><i class="fas fa-plus-circle"></i></a>
 
-<?php $reponse = $pdo->query("SELECT evenement.titre, evenement.dateCrea, evenement.description, image.url FROM evenement INNER JOIN image ON evenement.image_id = image.id" );
+<?php $reponse = $pdo->query("SELECT evenement.titre, evenement.dateCrea, evenement.description, evenement.url FROM evenement INNER JOIN image ON evenement.image_id = image.id" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)){
     echo $reponse_tableau["titre"]."</br>";
     echo $reponse_tableau["dateCrea"]."</br>";

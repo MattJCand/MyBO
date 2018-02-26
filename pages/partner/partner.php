@@ -4,6 +4,7 @@
 
 <h1 class="align">Index page Partenaire</h1>
 <a href="../home/home.php"><i class="fas fa-home"></i></a>
+<a href="add.php"><i class="fas fa-plus-circle"></i></a>
 
 <?php $reponse = $pdo->query("SELECT partenaire.nom, partenaire.adresse, partenaire.description, image.url FROM partenaire INNER JOIN image ON partenaire.image_id = image.id" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
