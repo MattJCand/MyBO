@@ -3,7 +3,7 @@
 <?php include "../../templates/pdo.php"; ?>
 
 <h1 class="align">Edit Page Partenaire</h1>
-<a href="../team/team.php"><i class="fas fa-home"></i></a>
+<a href="../partner/partner.php"><i class="fas fa-home"></i></a>
 
 <?php $id = $_GET['id']; ?>
 
