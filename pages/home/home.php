@@ -1,11 +1,11 @@
-<?php include "../../templates/header_page.php"; ?>
+<?php include "../../templates/header.php"; ?>
 <?php include "../../admin/session.php"; ?>
 
-<div class="align homeLogo">
+<!-- <div class="align homeLogo">
   <img src="../../asset/img/logo_final.png" alt="logo Planete Manga">
   <h1 class="align"> Accueil Back Office </h1>
   <a href="../../admin/logout.php">Deconnexion</a>
-</div>
+</div> -->
 
 
 <section id="sectionPages">
