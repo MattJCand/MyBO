@@ -27,7 +27,6 @@
       $req->bindParam(':mobile', $_POST['mobile'], PDO::PARAM_STR);
       $req->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
       if ($req->execute()) {
-       header('Location: team.php');
     }
   }
 ?>

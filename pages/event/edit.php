@@ -1,4 +1,4 @@
-<?php include "../../templates/header_page.php"; ?>
+<?php include "../../templates/header.php"; ?>
 <?php include "../../admin/session.php"; ?>
 <?php include "../../templates/pdo.php"; ?>
 
@@ -55,3 +55,5 @@
 
 
 <?php include "../../templates/footer.php"; ?>
+
+//test
