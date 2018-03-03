@@ -9,6 +9,7 @@
 @import url('partner.css');
 @import url('contact.css');
 @import url('login.css');
+@import url('navbar.css');
 
 .align{
   text-align: center;
