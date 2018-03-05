@@ -1,8 +1,10 @@
-<?php include "../../templates/header_page.php"; ?>
+<?php include "../../templates/header.php"; ?>
 <?php include "../../admin/session.php"; ?>
 <?php include "../../templates/pdo.php"; ?>
 
+
 <h1 class="align">Ajouter un professeur</h1>
+<a href="pages/team/team.php"><i class="fas fa-home"></i></a>
 
 <?php
     // $bdd = "INSERT INTO professeur(nom, prenom, profession, description, mobile, email VALUES (:nom, :prenom, :profession, :description , :mobile , :email )";

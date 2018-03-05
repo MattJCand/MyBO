@@ -4,7 +4,7 @@
 <?php include "../../templates/navbar.php"; ?>
 
 
-<div style="margin: 15% 25% 0 15%;">
+<div class="block_title">
   <h1 class="align">Index Page évenements</h1>
   <a href="pages/home/home.php"><i class="fas fa-home"></i></a>
   <a href="pages/event/add.php"><i class="fas fa-plus-circle"></i></a>
@@ -25,7 +25,7 @@
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)){
     echo "<tbody>";
     echo "<tr>";
-      echo "<td>".$reponse_tableau["titre"]."</td";
+      echo "<td>".$reponse_tableau["titre"]."</td>";
       echo "<td>".$reponse_tableau["dateCrea"]."</td>";
       echo "<td>".$reponse_tableau["description"]."</td>";
       echo "<td>".$reponse_tableau["url"]."</td>";

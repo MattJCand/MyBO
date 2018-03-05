@@ -4,6 +4,7 @@
 
 
 <h1 class="align">Ajouter un partenaire</h1>
+<a href="pages/partner/partner.php"><i class="fas fa-home"></i></a>
 
 <?php
     // $bdd = "INSERT INTO professeur(nom, prenom, profession, description, mobile, email VALUES (:nom, :prenom, :profession, :description , :mobile , :email )";
