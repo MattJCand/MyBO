@@ -17,8 +17,8 @@
     <th>Date Créa</th>
     <th>Description</th>
     <th>Lien Event</th>
-    <th></th>
-    <th></th>
+    <th>Editer</th>
+    <th>Supprimer</th>
    </tr>
   </thead>
 <?php $reponse = $pdo->query("SELECT evenement.titre, evenement.dateCrea, evenement.description, evenement.url, evenement.id FROM evenement INNER JOIN image ON evenement.image_id = image.id" );
