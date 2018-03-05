@@ -24,8 +24,8 @@
         <li><a href="pages/team/team.php">Equipe</a></li>
         <li class="submenu"><a href="pages/home.php">Divers</a>
           <ul>
-            <li><a href="pages/event/event">Evénements</a></li>
-            <li><a href="pages/press/press">Presse</a></li>
+            <li><a href="pages/event/event.php">Evénements</a></li>
+            <li><a href="pages/press/press.php">Presse</a></li>
           </ul>
         </li>
         <li><a href="pages/contact/contact.php">Contact</a></li>
