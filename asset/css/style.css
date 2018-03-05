@@ -14,3 +14,11 @@
 .align{
   text-align: center;
 }
+
+.img_vignette{
+  width:50%;
+}
+
+.block_title{
+  margin: 15% 25% 0 15%;
+}

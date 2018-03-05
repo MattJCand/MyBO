@@ -1,9 +1,9 @@
-<?php include "../../templates/header_page.php"; ?>
+<?php include "../../templates/header.php"; ?>
 <?php include "../../admin/session.php"; ?>
 <?php include "../../templates/pdo.php"; ?>
 
-<h1 class="align">EditPage Equipe</h1>
-<a href="../team/team.php"><i class="fas fa-home"></i></a>
+<h1 class="align">Edit Page Equipe</h1>
+<a href="pages/team/team.php"><i class="fas fa-home"></i></a>
 
 <?php $id = $_GET['id']; ?>
 

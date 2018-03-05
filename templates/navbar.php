@@ -17,15 +17,19 @@
             <li><a href="pages/galerie/galerie.php">Galerie</a></li>
             <li><a href="pages/about/about.php">A propos</a></li>
             <li><a href="pages/partner/partner.php">Nos partenaires</a></li>
+            <li><a href="pages/actu/actu.php">Actualité</a></li>
           </ul>
         </li>
-        <li class="submenu">
-          <a href="pages/cours/cours.php">
-            Cours
-          </a>
-        <li><a href="pages/event/event">événements</a></li>
+        <li><a href="pages/cours/cours.php">Cours</a></li>
+        <li><a href="pages/team/team.php">Equipe</a></li>
+        <li class="submenu"><a href="pages/home.php">Divers</a>
+          <ul>
+            <li><a href="pages/event/event">Evénements</a></li>
+            <li><a href="pages/press/press">Presse</a></li>
+          </ul>
+        </li>
         <li><a href="pages/contact/contact.php">Contact</a></li>
-        <li><a href="admin/logout.php">Déconnection</a></li>
+        <li><a href="admin/logout.php">Déconnexion</a></li>
       </ul>
     </nav>
   </div>

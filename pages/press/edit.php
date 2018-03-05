@@ -1,9 +1,9 @@
-<?php include "../../templates/header_page.php"; ?>
+<?php include "../../templates/header.php"; ?>
 <?php include "../../admin/session.php"; ?>
 <?php include "../../templates/pdo.php"; ?>
 
 <h1 class="align">Edit Page Press</h1>
-<a href="../press/press.php"><i class="fas fa-home"></i></a>
+<a href="pages/press/press.php"><i class="fas fa-home"></i></a>
 
 <?php $id = $_GET['id']; ?>
 

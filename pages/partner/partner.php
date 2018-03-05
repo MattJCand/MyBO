@@ -4,7 +4,7 @@
 <?php include "../../templates/navbar.php"; ?>
 
 
-<div class="align homeLogo" style="margin: 15% 25% 0 15%;">
+<div class="align homeLogo block_title">
   <h1 class="align">Index page Partenaire</h1>
   <a href="pages/home/home.php"><i class="fas fa-home"></i></a>
   <a href="pages/partner/add.php"><i class="fas fa-plus-circle"></i></a>
@@ -14,12 +14,13 @@
 <table>
   <thead>
    <tr>
+    <th>Image</th>
     <th>Nom</th>
     <th>Adresse</th>
     <th>Description</th>
-    <th>Description</th>
     <th>Offre</th>
-    <th>Image</th>
+    <th>Editer</th>
+    <th>Supprimer</th>
    </tr>
   </thead>
 
@@ -27,16 +28,16 @@
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
    echo "<tbody>";
    echo "<tr>";
+    $image = $reponse_tableau["url"];
+    $imageData = base64_encode(file_get_contents($image));
+    echo '<td><img class="img_vignette" src="data:image/jpeg;base64,'.$imageData.'"></td>';
     echo "<td>".$reponse_tableau["nom"]."</td>";
     echo "<td>".$reponse_tableau["adresse"]."</td>";
     echo "<td>".$reponse_tableau["description"]."</td>";
     echo "<td>".$reponse_tableau["offre"]."</td>";
-    $image = $reponse_tableau["url"];
-    $imageData = base64_encode(file_get_contents($image));
-    echo '<td><img src="data:image/jpeg;base64,'.$imageData.'"></td>';
     echo "<td><a href=\"pages/partner/edit.php?id=$reponse_tableau[id]\"><i class='fas fa-edit'></i></a></td>";
     echo "<td><a href=\"pages/partner/delete.php?id=$reponse_tableau[id]\" onClick=\"return confirm('Are you sure you want to delete?')\"><i class='fas fa-trash'></i></a></td>";
-  echo "<tr>";
+  echo "</tr>";
 
 ?>
 
