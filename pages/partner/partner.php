@@ -14,27 +14,23 @@
 <table>
   <thead>
    <tr>
-    <th>Image</th>
+    <!-- <th>Logo</th> -->
     <th>Nom</th>
-    <th>Adresse</th>
     <th>Description</th>
-    <th>Offre</th>
     <th>Editer</th>
     <th>Supprimer</th>
    </tr>
   </thead>
 
-<?php $reponse = $pdo->query("SELECT partenaire.nom, partenaire.adresse, partenaire.description, partenaire.offre, image.url, partenaire.id FROM partenaire INNER JOIN image ON partenaire.image_id = image.id" );
+<?php $reponse = $pdo->query("SELECT partenaire.nom, partenaire.logo, partenaire.description, partenaire.id FROM partenaire ");
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
    echo "<tbody>";
    echo "<tr>";
-    $image = $reponse_tableau["url"];
-    $imageData = base64_encode(file_get_contents($image));
-    echo '<td><img class="img_vignette" src="data:image/jpeg;base64,'.$imageData.'"></td>';
+    #$logo = $reponse_tableau["logo"];
+    #$imageData = base64_encode(file_get_contents($logo));
+    #echo '<td><img class="img_vignette" src="data:image/jpeg;base64,'.$imageData.'"></td>';
     echo "<td>".$reponse_tableau["nom"]."</td>";
-    echo "<td>".$reponse_tableau["adresse"]."</td>";
     echo "<td>".$reponse_tableau["description"]."</td>";
-    echo "<td>".$reponse_tableau["offre"]."</td>";
     echo "<td><a href=\"pages/partner/edit.php?id=$reponse_tableau[id]\"><i class='fas fa-edit'></i></a></td>";
     echo "<td><a href=\"pages/partner/delete.php?id=$reponse_tableau[id]\" onClick=\"return confirm('Are you sure you want to delete?')\"><i class='fas fa-trash'></i></a></td>";
   echo "</tr>";

@@ -8,12 +8,11 @@
 
 <?php
     // $bdd = "INSERT INTO professeur(nom, prenom, profession, description, mobile, email VALUES (:nom, :prenom, :profession, :description , :mobile , :email )";
-$bdd="INSERT INTO partenaire(nom, adresse, description, offre, image_id) VALUES (:nom, :adresse, :description, :offre, 1)";
+$bdd="INSERT INTO partenaire(nom, logo, description) VALUES (:nom, :logo, :description)";
     $req = $pdo->prepare($bdd);
     $req->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
-    $req->bindParam(':adresse', $_POST['adresse'], PDO::PARAM_STR);
+    $req->bindParam(':logo', $_POST['logo'], PDO::PARAM_STR);
     $req->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
-    $req->bindParam(':offre', $_POST['offre'], PDO::PARAM_STR);
     if ($req->execute()) {
        header('Location: partner.php');
     }
@@ -22,9 +21,8 @@ $bdd="INSERT INTO partenaire(nom, adresse, description, offre, image_id) VALUES 
 
 <form method="post">
   <input name="nom" type="text"  placeholder="nom" value="<?php $nom;?>">
-  <input name="adresse" type="text" placeholder="adresse"  value="<?php $adresse;?>">
+  <input name="logo" type="text" placeholder="logo"  value="<?php $logo;?>">
   <input name="description" type="text"  placeholder="Description" value="<?php $description;?>">
-  <input name="offre" type="text"  placeholder="Offre" value="<?php $offre;?>">
   <input type="submit" name="submit" value="submit">
 </form>
 
