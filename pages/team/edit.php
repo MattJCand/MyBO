@@ -8,24 +8,23 @@
 <?php $id = $_GET['id']; ?>
 
 <?php
-    $reponse = $pdo->query("SELECT professeur.nom, professeur.prenom, professeur.profession,professeur.description, professeur.mobile, professeur.email, image.url FROM professeur INNER JOIN image ON professeur.image_id = image.id WHERE professeur.id = $id" );
+    $reponse = $pdo->query("SELECT professeur.nom, professeur.prenom, professeur.profession, professeur.description, professeur.email, professeur.image_profil FROM professeur WHERE professeur.id = $id" );
     while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
       $prenom = $reponse_tableau["prenom"];
       $nom = $reponse_tableau["nom"];
       $profession = $reponse_tableau["profession"];
       $description = $reponse_tableau["description"];
-      $mobile = $reponse_tableau["mobile"];
       $email = $reponse_tableau["email"];
-      $url = $reponse_tableau["url"];
+      $image_profil = $reponse_tableau["image_profil"];
 
-      $bdd= " UPDATE professeur SET professeur.nom = :nom, professeur.prenom = :prenom, professeur.profession = :profession, professeur.description = :description, professeur.mobile = :mobile, professeur.email = :email WHERE professeur.id = '$id' ";
+      $bdd= " UPDATE professeur SET professeur.nom = :nom, professeur.prenom = :prenom, professeur.profession = :profession, professeur.description = :description, professeur.image_profil = :image_profil, professeur.email = :email WHERE professeur.id = '$id' ";
       $req = $pdo->prepare($bdd);
       $req->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
       $req->bindParam(':prenom', $_POST['prenom'], PDO::PARAM_STR);
       $req->bindParam(':profession', $_POST['profession'], PDO::PARAM_STR);
       $req->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
-      $req->bindParam(':mobile', $_POST['mobile'], PDO::PARAM_STR);
       $req->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
+      $req->bindParam(':image_profil', $_POST['image_profil'], PDO::PARAM_STR);
       if ($req->execute()) {
        header('Location: team.php');
     }
@@ -51,16 +50,12 @@
             <td><input type="text" name="description" value="<?php echo $description;?>"></td>
         </tr>
         <tr>
-            <td>Mobile</td>
-            <td><input type="tel" name="mobile" value="<?php echo $mobile;?>"></td>
-        </tr>
-        <tr>
             <td>Email</td>
-            <td><input type="email" name="email" value="<?php echo $email;?>"></td>
+            <td><input type="text" name="email" value="<?php echo $email;?>"></td>
         </tr>
         <tr>
-            <td>Url</td>
-            <td><input type="url" name="url" value="<?php echo $url;?>"></td>
+            <td>image_profil</td>
+            <td><input type="text" name="image_profil" value="<?php echo $image_profil;?>"></td>
         </tr>
         <tr>
             <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
