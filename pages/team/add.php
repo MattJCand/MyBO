@@ -8,14 +8,14 @@
 
 <?php
     // $bdd = "INSERT INTO professeur(nom, prenom, profession, description, mobile, email VALUES (:nom, :prenom, :profession, :description , :mobile , :email )";
-$bdd="INSERT INTO professeur(nom, prenom, profession, description, mobile, email, image_id) VALUES (:nom, :prenom, :profession, :description, :mobile , :email, 1)";
+$bdd="INSERT INTO professeur(nom, prenom, profession, description, email, image_profil) VALUES (:nom, :prenom, :profession, :description, :email, :image_profil)";
     $req = $pdo->prepare($bdd);
     $req->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
     $req->bindParam(':prenom', $_POST['prenom'], PDO::PARAM_STR);
     $req->bindParam(':profession', $_POST['profession'], PDO::PARAM_STR);
     $req->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
-    $req->bindParam(':mobile', $_POST['mobile'], PDO::PARAM_STR);
     $req->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
+     $req->bindParam(':image_profil', $_POST['image_profil'], PDO::PARAM_STR);
     if ($req->execute()) {
        header('Location: team.php');
     }
@@ -27,8 +27,8 @@ $bdd="INSERT INTO professeur(nom, prenom, profession, description, mobile, email
   <input name="prenom" type="text"  placeholder="prenom" value="<?php $prenom;?>">
   <input name="profession" type="text"  placeholder="Profession" value="<?php $profession;?>">
   <input name="description" type="text"  placeholder="Description" value="<?php $description;?>">
-  <input name="mobile" type="text"  placeholder="Mobile" value="<?php $mobile;?>">
   <input name="email" type="text"  placeholder="Email" value="<?php $email;?>">
+  <input name="image_profil" type="text"  placeholder="image" value="<?php $image_profil;?>">
   <input type="submit" name="submit" value="submit">
 </form>
 
