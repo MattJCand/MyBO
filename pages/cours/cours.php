@@ -21,7 +21,7 @@
    </tr>
   </thead>
 
-<?php $reponse = $pdo->query("SELECT cours.intitule, cours.description, cours.objectif_un, cours.objectif_deux, cours.objectif_trois, professeur.prenom, professeur.nom, professeur.image_profil, cours.id FROM cours INNER JOIN professeur ON cours.professeur_id = professeur.id" );
+<?php $reponse = $pdo->query("SELECT cours.intitule, cours.description, cours.objectif_un, cours.objectif_deux, cours.objectif_trois, cours.id FROM cours" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
     echo "<tbody>";
     echo "<tr>";

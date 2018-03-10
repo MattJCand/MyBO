@@ -8,18 +8,20 @@
 <?php $id = $_GET['id']; ?>
 
 <?php
-    $reponse = $pdo->query("SELECT presse.titre, presse.dateCrea, presse.description, image.url FROM presse INNER JOIN image ON presse.image_id = image.id WHERE presse.id = $id" );
+    $reponse = $pdo->query("SELECT presse.titre, presse.description, presse.url, presse.image FROM presse WHERE presse.id = $id" );
     while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
       $titre = $reponse_tableau["titre"];
-      $dateCrea = $reponse_tableau["dateCrea"];
+      $url = $reponse_tableau["url"];
       $description = $reponse_tableau["description"];
+      $image = $reponse_tableau["image"];
 
 
-      $bdd= " UPDATE presse SET presse.titre = :titre, presse.titre = :titre, presse.dateCrea = :dateCrea, presse.description = :description WHERE presse.id = '$id' ";
+      $bdd= " UPDATE presse SET presse.titre = :titre, presse.description = :description, presse.url = :url, presse.image = :image WHERE presse.id = '$id' ";
       $req = $pdo->prepare($bdd);
       $req->bindParam(':titre', $_POST['titre'], PDO::PARAM_STR);
-      $req->bindParam(':dateCrea', $_POST['dateCrea'], PDO::PARAM_STR);
+      $req->bindParam(':url', $_POST['url'], PDO::PARAM_STR);
       $req->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
+         $req->bindParam(':image', $_POST['image'], PDO::PARAM_STR);
       if ($req->execute()) {
        header('Location: press.php');
     }
@@ -33,12 +35,16 @@
             <td><input type="text" name="titre" value="<?php echo $titre;?>"></td>
         </tr>
         <tr>
-            <td>Date Création</td>
-            <td><input type="date" name="dateCrea" value="<?php echo $dateCrea;?>"></td>
+            <td>Url</td>
+            <td><input type="text" name="url" value="<?php echo $url;?>"></td>
         </tr>
         <tr>
             <td>description</td>
             <td><input type="text" name="description" value="<?php echo $description;?>"></td>
+        </tr>
+        <tr>
+            <td>image</td>
+            <td><input type="text" name="image" value="<?php echo $image;?>"></td>
         </tr>
     </table>
     <input type="submit" name="submit" value="submit">
