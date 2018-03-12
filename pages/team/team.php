@@ -15,22 +15,24 @@
     <th>Profession</th>
     <th>Description</th>
     <th>Email</th>
+    <th>Tarif Cours</th>
     <th>Editer</th>
     <th>Supprimer</th>
    </tr>
   </thead>
 
-<?php $reponse = $pdo->query("SELECT professeur.nom, professeur.prenom, professeur.profession, professeur.description, professeur.email, professeur.image_profil, professeur.id FROM professeur" );
+<?php $reponse = $pdo->query("SELECT professeur.nom_prof, professeur.prenom_prof, professeur.profession_prof, professeur.description_prof, professeur.email_prof, professeur.tarif_prof, professeur.id_prof FROM Professeur" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
    echo "<tbody>";
    echo "<tr>";
-    echo "<td>".$reponse_tableau["prenom"]."</td>";
-    echo "<td>".$reponse_tableau["nom"]."</td>";
-    echo "<td>".$reponse_tableau["profession"]."</td>";
-    echo "<td>".$reponse_tableau["description"]."</td>";
-    echo "<td>".$reponse_tableau["email"]."</td>";
-    echo "<td>"."<a href=\"pages/team/edit.php?id=$reponse_tableau[id]\"><i class='fas fa-edit'></i></a>"."</td>";;
-    echo "<td>"."<a href=\"pages/team/delete.php?id=$reponse_tableau[id]\" onClick=\"return confirm('Are you sure you want to delete?')\"><i class='fas fa-trash'></i></a>"."</td>";;
+    echo "<td>".$reponse_tableau["prenom_prof"]."</td>";
+    echo "<td>".$reponse_tableau["nom_prof"]."</td>";
+    echo "<td>".$reponse_tableau["profession_prof"]."</td>";
+    echo "<td>".$reponse_tableau["description_prof"]."</td>";
+    echo "<td>".$reponse_tableau["email_prof"]."</td>";
+    echo "<td>".$reponse_tableau["tarif_prof"]."</td>";
+    echo "<td>"."<a href=\"pages/team/edit.php?id=$reponse_tableau[id_prof]\"><i class='fas fa-edit'></i></a>"."</td>";;
+    echo "<td>"."<a href=\"pages/team/delete.php?id=$reponse_tableau[id_prof]\" onClick=\"return confirm('Are you sure you want to delete?')\"><i class='fas fa-trash'></i></a>"."</td>";;
    echo "</tr>";
     ?>
 

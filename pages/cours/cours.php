@@ -19,17 +19,14 @@
     <th>Objectif Trois</th>
     <th>Editer</th>
    </tr>
-  </thead>
+ </thead>
 
-<?php $reponse = $pdo->query("SELECT cours.intitule, cours.description, cours.objectif_un, cours.objectif_deux, cours.objectif_trois, cours.id FROM cours" );
+<?php $reponse = $pdo->query("SELECT cours.intitule_cours, cours.description_cours, cours.id FROM Cours" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
     echo "<tbody>";
     echo "<tr>";
-      echo "<td>".$reponse_tableau["intitule"]."</td>";
-      echo "<td>".$reponse_tableau["description"]."</td>";
-      echo "<td>".$reponse_tableau["objectif_un"]."</td>";
-      echo "<td>".$reponse_tableau["objectif_deux"]."</td>";
-      echo "<td>".$reponse_tableau["objectif_trois"]."</td>";
+      echo "<td>".$reponse_tableau["intitule_cours"]."</td>";
+      echo "<td>".$reponse_tableau["description_cours"]."</td>";
       echo "<td><a href=\"pages/cours/edit.php?id=$reponse_tableau[id]\"><i class='fas fa-edit'></i></a></td>";
     echo "</tr>";
     ?>

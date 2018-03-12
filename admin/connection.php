@@ -14,7 +14,7 @@
     if( isset($_POST['login']) && isset($_POST['mdp'])){
         $login = $_POST['login'];
         $mdp = $_POST['mdp'];
-        $req = "SELECT * FROM administrateur WHERE login = :login AND mdp = :mdp";
+        $req = "SELECT * FROM utilisateur WHERE login_user = :login AND mdp_user = :mdp";
         $resultat = $pdo->prepare($req);
         $resultat->bindParam(':login', $login, PDO::PARAM_STR);
         $resultat->bindParam(':mdp', $mdp, PDO::PARAM_STR);

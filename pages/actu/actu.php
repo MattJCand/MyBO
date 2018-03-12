@@ -9,16 +9,16 @@
 
 <table>
   <thead>
-   <tr>
-    <th>titre</th>
-    <th>description</th>
-    <th>url</th>
-    <th>Editer</th>
-    <th>Supprimer</th>
-   </tr>
+     <tr>
+      <th>titre</th>
+      <th>description</th>
+      <th>url</th>
+      <th>Editer</th>
+      <th>Supprimer</th>
+    </tr>
   </thead>
 
-<?php $reponse = $pdo->query("SELECT actualite.titre, actualite.description, actualite.url, actualite.id FROM actualite ");
+<?php $reponse = $pdo->query("SELECT actualite.titre, actualite.description, actualite.url, actualite.id FROM Actualite ");
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
    echo "<tbody>";
    echo "<tr>";
