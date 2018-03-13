@@ -1,13 +1,11 @@
 
 <?php
-require_once '../inc/header.php';
-require_once '../inc/securite.php';
 require_once "../inc/menu.php";
 ?>
 
 <div class="block_title">
   <h1 class="align">Index Page évenements</h1>
-  <a href="home/home.php"><i class="fas fa-home"></i></a>
+  <a href="home.php"><i class="fas fa-home"></i></a>
   <a href="event/add.php"><i class="fas fa-plus-circle"></i></a>
 </div>
 

@@ -1,7 +1,6 @@
 <?php
-require_once '../inc/header.php';
-require_once '../inc/securite.php';
-require_once "../inc/menu.php"; ?>
+  require_once "../inc/menu.php";
+ ?>
 
 <div class="block_title">
   <h1 class="align">Index page Gallerie</h1>

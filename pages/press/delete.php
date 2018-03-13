@@ -1,8 +1,11 @@
+<?php
+  require_once "../../inc/inc.php";
+?>
 
 <?php
   $id = $_GET['id'];
-  $req = $pdo->exec("DELETE FROM `presse` WHERE `id` = $id");
+  $req = $bdd->exec("DELETE FROM `presse` WHERE `id_presse` = $id");
   if ($req){
-     header('Location:press.php');
+     header('Location:../presse.php');
   }
 ?>

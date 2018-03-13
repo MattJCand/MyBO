@@ -1,11 +1,10 @@
 <?php
-require_once '../inc/header.php';
-require_once '../inc/securite.php';
-require_once "../inc/menu.php"; ?>
+  require_once "../inc/menu.php";
+?>
 
 <div class="align homeLogo block_title">
   <h1 class="align">Index page Partenaire</h1>
-  <a href="pages/home/home.php"><i class="fas fa-home"></i></a>
+  <a href="home.php"><i class="fas fa-home"></i></a>
   <a href="pages/partner/add.php"><i class="fas fa-plus-circle"></i></a>
 </div>
 
@@ -21,7 +20,7 @@ require_once "../inc/menu.php"; ?>
    </tr>
   </thead>
 
-<?php $reponse = $pdo->query("SELECT partenaire.nom, partenaire.logo, partenaire.description, partenaire.id FROM partenaire ");
+<?php $reponse = $bdd->query("SELECT partenaire.nom, partenaire.logo, partenaire.description, partenaire.id FROM partenaire ");
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
    echo "<tbody>";
    echo "<tr>";
@@ -41,4 +40,3 @@ require_once "../inc/menu.php"; ?>
       echo "<table";
   }
 ?>
-

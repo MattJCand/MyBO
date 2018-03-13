@@ -6,11 +6,8 @@ require_once "../inc/menu.php";
 ?>
 
 <h1 class="align block_title">Index Page Actualité</h1>
-<a href="../home.php"><i class="fas fa-home"></i></a>
+<a href="home.php"><i class="fas fa-home"></i></a>
 <a href="actu/add.php"><i class="fas fa-plus-circle"></i></a>
-
-
-
 
 <?php
   if($reponse_req->rowCount()>=1){
@@ -24,10 +21,10 @@ require_once "../inc/menu.php";
         <th>Url</th>
         <th>Date</th>
         <th colspan=2>Gestion</th>
-        
+
       </tr>
-    </thead> 
-<?php 
+    </thead>
+<?php
 
   while ( $reponse_tableau = $reponse_req->fetch(PDO::FETCH_ASSOC)) {
 ?>
@@ -44,19 +41,18 @@ require_once "../inc/menu.php";
         </a>
       </td>
       <td>
-        <a href="actu/delete.php?id=$reponse_tableau[id]" onClick=" confirm('Are you sure you want to delete?')">
+        <a href="actu/delete.php?id=<?php echo $reponse_tableau["id_actu"]?>" onClick=" confirm('Are you sure you want to delete?')">
           <i class='fas fa-trash'></i>
         </a>
       </td>
     </tr>
 
-<?php 
+<?php
   }
 ?>
   </tbody>
 <table>
 
-<?php 
+<?php
 }
 ?>
-
