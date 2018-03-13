@@ -1,6 +1,4 @@
 <?php
-require_once '../inc/header.php';
-require_once '../inc/securite.php';
 require_once "../inc/menu.php";
 
 
