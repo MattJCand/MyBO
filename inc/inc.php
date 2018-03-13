@@ -8,7 +8,7 @@ $options = array(
 		);
 
 try{
-	$bdd= new PDO( 'mysql:host=localhost;dbname=planetemanga_bd3','root','root', $options);
+	$bdd= new PDO( 'mysql:host=localhost;dbname=planetemanga','root','root', $options);
 }
 catch(Exception $e){
 	die('Erreur lors de la connexion de la base de données: '.$e -> getMessage());
