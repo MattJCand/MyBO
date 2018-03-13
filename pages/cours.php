@@ -1,8 +1,7 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
-<?php include "../../templates/navbar.php"; ?>
-
+<?php
+require_once '../inc/header.php';
+require_once '../inc/securite.php';
+require_once "../inc/menu.php"; ?>
 
 <div class="block_title">
   <h1 class="align"> Index page Cours</h1>
@@ -21,7 +20,7 @@
    </tr>
  </thead>
 
-<?php $reponse = $pdo->query("SELECT cours.intitule_cours, cours.description_cours, cours.id FROM Cours" );
+<?php $reponse = $pdo->query("SELECT * FROM Cours" );
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
     echo "<tbody>";
     echo "<tr>";
@@ -36,4 +35,4 @@
   }
 ?>
 
-<?php include "../../templates/footer.php"; ?>
+

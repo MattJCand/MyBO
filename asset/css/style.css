@@ -1,4 +1,4 @@
-@import url('header.css');
+/*@import url('header.css');
 @import url('footer.css');
 @import url('home.css');
 @import url('about.css');
@@ -22,3 +22,6 @@
 .block_title{
   margin: 15% 25% 0 15%;
 }
+*/
+
+@import url('navbar.css');

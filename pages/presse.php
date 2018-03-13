@@ -1,7 +1,7 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
-<?php include "../../templates/navbar.php"; ?>
+<?php
+require_once '../inc/header.php';
+require_once '../inc/securite.php';
+require_once "../inc/menu.php"; ?>
 
 <h1 class="align block_title">Index Page Press</h1>
 <a href="pages/home/home.php"><i class="fas fa-home"></i></a>
@@ -39,4 +39,4 @@
       echo "<table";
   }
 ?>
-<?php include "../../templates/footer.php"; ?>
+

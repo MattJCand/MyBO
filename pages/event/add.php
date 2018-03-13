@@ -1,6 +1,4 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
+
 <h1 class="align">Ajouter un evenement</h1>
 
 <?php
@@ -28,5 +26,4 @@ $bdd="INSERT INTO evenement(image, nom, description, lieu, url, horaire_id) VALU
 </form>
 
 
-<?php include "../../templates/footer.php"; ?>
 

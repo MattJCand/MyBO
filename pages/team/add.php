@@ -1,6 +1,4 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
+
 
 
 <h1 class="align">Ajouter un professeur</h1>
@@ -33,4 +31,4 @@ $bdd="INSERT INTO professeur(nom_prof, prenom_prof, profession_prof, description
 </form>
 
 
-<?php include "../../templates/footer.php"; ?>
+

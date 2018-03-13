@@ -1,6 +1,3 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
 
 
 <h1 class="align">Ajouter une actualité</h1>
@@ -27,4 +24,4 @@ $bdd="INSERT INTO actualite(titre, description, url) VALUES (:titre, :descriptio
 </form>
 
 
-<?php include "../../templates/footer.php"; ?>
+

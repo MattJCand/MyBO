@@ -1,15 +1,14 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
+
 
 <h1 class="align">Edit Page Membre</h1>
 <a href="pages/member/member.php"><i class="fas fa-home"></i></a>
 
-<?php $id = $_GET['id']; ?>
-
 <?php
-    $reponse = $pdo->query("SELECT membre.description, membre.prix_enfant, membre.prix_adulte, FROM membre  WHERE membre.id = $id" );
-    while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
+
+      $id = $_GET['id'];
+
+      $reponse = $pdo->query("SELECT membre.description, membre.prix_enfant, membre.prix_adulte, FROM membre  WHERE membre.id = $id" );
+      while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
       $description = $reponse_tableau["description"];
       $prix_enfant = $reponse_tableau["prix_enfant"];
       $prix_adulte = $reponse_tableau["prix_adulte"];
@@ -48,4 +47,3 @@
 
 
 
-<?php include "../../templates/footer.php"; ?>

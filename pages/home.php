@@ -1,9 +1,16 @@
-<?php include "../templates/header.php"; ?>
-<?php include "../admin/session.php"; ?>
-<?php include "../templates/navbar.php"; ?>
+<?php
+require_once '../inc/header.php';
+require_once '../inc/securite.php';
+require_once "../inc/menu.php";
+
+
+?>
+
+
+
 
 <div class="align homeLogo block_title">
-  <h1 class="align"> Accueil Back Office </h1>
+  <h1 class="align">Accueil Back Office</h1>
 </div>
 
-<?php include "../templates/footer.php"; ?>
+<?php include "../inc/footer.php"; ?>

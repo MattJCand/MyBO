@@ -1,6 +1,4 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
+
 
 
 <h1 class="align">Ajouter un partenaire</h1>
@@ -27,5 +25,4 @@ $bdd="INSERT INTO partenaire(nom, logo, description) VALUES (:nom, :logo, :descr
 </form>
 
 
-<?php include "../../templates/footer.php"; ?>
 

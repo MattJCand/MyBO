@@ -1,6 +1,4 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
+
 
 <h1 class="align">Ajouter un article de presse</h1>
 <a href="pages/press/press.php"><i class="fas fa-home"></i></a>
@@ -26,4 +24,4 @@ $bdd="INSERT INTO presse(titre, dateCrea, description, image_id) VALUES (:titre,
 </form>
 
 
-<?php include "../../templates/footer.php"; ?>
+

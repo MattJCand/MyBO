@@ -1,7 +1,8 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
-<?php include "../../templates/navbar.php"; ?>
+<?php
+require_once '../inc/header.php';
+require_once '../inc/securite.php';
+require_once "../inc/menu.php";
+?>
 
 <h1 class="align block_title">Index Page Actualité</h1>
 <a href="pages/home/home.php"><i class="fas fa-home"></i></a>
@@ -17,6 +18,7 @@
       <th>Supprimer</th>
     </tr>
   </thead>
+
 
 <?php $reponse = $pdo->query("SELECT actualite.titre, actualite.description, actualite.url, actualite.id FROM Actualite ");
   while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
@@ -36,4 +38,4 @@
   }
 ?>
 
-<?php include "../../templates/footer.php"; ?>
+

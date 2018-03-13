@@ -53,7 +53,11 @@ header{
   position: fixed;
   width: 100%;
   z-index: 1000;
-  background-color: #fff
+  background-color: #fff;
+  -webkit-box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.26);
+  -moz-box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.26);
+  box-shadow: 0px 5px 17px 0px rgba(0,0,0,0.26);
+
 
 }
 

@@ -1,6 +1,4 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
+
 
 <h1 class="align">Edit Page Equipe</h1>
 <a href="pages/team/team.php"><i class="fas fa-home"></i></a>
@@ -44,5 +42,3 @@
 </form>
 
 
-
-<?php include "../../templates/footer.php"; ?>

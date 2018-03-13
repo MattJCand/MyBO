@@ -1,6 +1,4 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/pdo.php"; ?>
+
 
 <h1 class="align">Edit Page Event</h1>
 <a href="pages/event/event.php"><i class="fas fa-home"></i></a>
@@ -62,4 +60,4 @@
 
 
 
-<?php include "../../templates/footer.php"; ?>
+

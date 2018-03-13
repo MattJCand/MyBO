@@ -1,6 +1,7 @@
-<?php include "../../templates/header.php"; ?>
-<?php include "../../admin/session.php"; ?>
-<?php include "../../templates/navbar.php"; ?>
+<?php
+require_once '../inc/header.php';
+require_once '../inc/securite.php';
+require_once "../inc/menu.php"; ?>
 
 <div class="block_title">
   <h1 class="align">Index page Gallerie</h1>
