@@ -1,12 +1,15 @@
+<?php 
 
+require_once "../../inc/menu_2.php";
 
+?>
 <h1 class="align">Edit Page Equipe</h1>
 <a href="pages/team/team.php"><i class="fas fa-home"></i></a>
 
 <?php $id = $_GET['id']; ?>
 
 <?php
-    $reponse = $pdo->query("SELECT actualite.titre, actualite.description, actualite.url, actualite.id FROM actualite WHERE actualite.id = $id" );
+    $reponse = $bdd->query("SELECT actualite.titre, actualite.description, actualite.url, actualite.id FROM actualite WHERE actualite.id = $id" );
     while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
       $titre = $reponse_tableau["titre"];
       $description = $reponse_tableau["description"];
