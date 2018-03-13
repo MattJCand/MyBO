@@ -25,3 +25,25 @@
 */
 
 @import url('navbar.css');
+table{
+	margin:auto;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+   	padding: 10px
+
+}
+
+.img_actu{
+	width: 100px
+}
+
+.titre_actu{
+	width: 100px;
+}
+
+.description_actu{
+	width: 800px
+}

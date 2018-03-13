@@ -1,14 +1,14 @@
 <?php
 include 'inc.php';
-//deconnexion
+
 if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
   session_destroy();
   // header('location:page_connexion.php?deconnexion=success');
-  header('location:../page_connexion.php');
+  header('location:../../page_connexion.php');
 }
-//securite
+
 if(!isset($_SESSION['membre'])){
-    header('location:../page_connexion.php?membre=none');
+    header('location:../../page_connexion.php?membre=none');
   }
   else
   {
@@ -24,7 +24,7 @@ if(!isset($_SESSION['membre'])){
 
     if($recherche_req_secu->rowCount()==0){
 
-      header('location:../page_connexion.php?req=fausse');
+      header('location:../../page_connexion.php?req=fausse');
     }
     // else{
 
@@ -44,8 +44,8 @@ if(!isset($_SESSION['membre'])){
     <title>Back Office</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-
-    <link rel='stylesheet' href='../asset/css/style.css' />
+   
+    <link rel='stylesheet' href='../../asset/css/style.css' />
   </head>
 <body>
 
@@ -53,30 +53,30 @@ if(!isset($_SESSION['membre'])){
   <header>
     <div class="container">
       <div class="bloc-logo-nav">
-        <a href="pages/home.php">
-          <img src="../asset/img/logo_final.png" alt="logo Planete Manga">
+        <a href="../home.php">
+          <img src="../../asset/img/logo_final.png" alt="logo Planete Manga">
         </a>
       </div>
 
       <nav class="menu majuscule">
         <ul class="text-center">
           <li><a href="home.php">Accueil</a></li>
-          <li class="submenu"><a href="home.php">L'école</a>
+          <li class="submenu"><a href="#"">L'école</a>
             <ul>
-              <li><a href="actu.php">Actualité</a></li>
-              <li><a href="galerie.php">Galerie</a></li>
-               <li><a href="member.php">Carte Membre</a></li>
+              <li><a href="../actu.php">Actualité</a></li>
+              <li><a href="../galerie.php">Galerie</a></li>
+               <li><a href="../member.php">Carte Membre</a></li>
             </ul>
           </li>
-          <li><a href="cours.php">Cours</a></li>
-          <li><a href="team.php">Equipe</a></li>
-          <li class="submenu"><a href="home.php">Divers</a>
+          <li><a href="../cours.php">Cours</a></li>
+          <li><a href="../team.php">Equipe</a></li>
+          <li class="submenu"><a href="#">Divers</a>
             <ul>
-              <li><a href="event.php">Evénements</a></li>
-              <li><a href="presse.php">Presse</a></li>
+              <!-- <li><a href="pages/event/event.php">Evénements</a></li> -->
+              <li><a href="../presse.php">Presse</a></li>
             </ul>
           </li>
-          <li><a href="partner.php">Nos partenaires</a></li>
+          <li><a href="../partner.php">Nos partenaires</a></li>
           <li><a href="?action=deconnexion">Déconnexion</a></li>
         </ul>
       </nav>
