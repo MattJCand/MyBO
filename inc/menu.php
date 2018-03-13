@@ -44,7 +44,7 @@ if(!isset($_SESSION['membre'])){
     <title>Back Office</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-   
+
     <link rel='stylesheet' href='../asset/css/style.css' />
   </head>
 <body>
@@ -72,7 +72,7 @@ if(!isset($_SESSION['membre'])){
           <li><a href="team.php">Equipe</a></li>
           <li class="submenu"><a href="home.php">Divers</a>
             <ul>
-              <!-- <li><a href="pages/event/event.php">Evénements</a></li> -->
+              <li><a href="event.php">Evénements</a></li>
               <li><a href="presse.php">Presse</a></li>
             </ul>
           </li>
