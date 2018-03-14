@@ -1,21 +1,24 @@
 
-
+<?php
+require_once '../../inc/header.php';
+require_once '../../inc/securite.php';
+require_once "../../inc/menu.php"; ?>
 <h1 class="align">Edit Page Partenaire</h1>
 <a href="pages/cours/cours.php"><i class="fas fa-home"></i></a>
 
 <?php $id = $_GET['id']; ?>
 
 <?php
-    $reponse = $pdo->query("SELECT cours.intitule_cours, cours.description_cours, cours.id FROM Cours" );
+    $reponse = $bdd->query("SELECT intitule_cours, description_cours, id_cours FROM cours" );
     while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
       $intitule = $reponse_tableau["intitule_cours"];
       $description = $reponse_tableau["description_cours"];
-      $bdd= " UPDATE cours SET cours.intitule_cours = :intitule, cours.description_cours = :description WHERE cours.id = '$id' ";
-      $req = $pdo->prepare($bdd);
+      $prep= " UPDATE cours SET intitule_cours = :intitule, description_cours = :description WHERE id_cours = '$id' ";
+      $req = $bdd->prepare($prep);
       $req->bindParam(':intitule', $_POST['intitule'], PDO::PARAM_STR);
       $req->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
       if ($req->execute()) {
-        header('Location: cours.php');
+        header('Location: ../cours.php');
       }
   }
 ?>
@@ -31,10 +34,8 @@
             <td><input type="text" name="description" value="<?php echo $description;?>"></td>
         </tr>
         <tr>
-            <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
+            <td><input type="hidden" name="id" value="<?php echo $_GET['id'];?>"></td>
         </tr>
     </table>
     <input type="submit" name="submit" value="submit">
 </form>
-
-

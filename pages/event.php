@@ -1,44 +1,67 @@
+<?php
+require_once "../inc/menu.php";
+
+  $req="SELECT *, date_format(date_debut, '%d/%m/%Y') AS date_fr FROM evenement e, image i, date d, horaire h WHERE e.id_image= i.id_img AND e.id_date=d.id_date AND e.id_horaire=h.id_horaire";
+  $reponse_req = $bdd->query($req);
+?>
+
+<h1 class="align block_title">Index Page Evenement</h1>
+<a href="home.php"><i class="fas fa-home"></i></a>
+<a href="event/add.php"><i class="fas fa-plus-circle"></i></a>
 
 <?php
-require_once '../inc/header.php';
-require_once '../inc/securite.php';
-require_once "../inc/menu.php"; ?>
+  if($reponse_req->rowCount()>=1){
+?>
+   <table>
+    <thead>
+       <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Lieu</th>
+        <th>Url</th>
+       <!--  <th>Date Début</th>
+        <th>Date fin</th>
+        <th>Heure début</th>
+        <th>Heure fin</th> -->
+        <th colspan=2>Gestion</th>
 
-<div class="block_title">
-  <h1 class="align">Index Page évenements</h1>
-  <a href="pages/home/home.php"><i class="fas fa-home"></i></a>
-  <a href="pages/event/add.php"><i class="fas fa-plus-circle"></i></a>
-</div>
+      </tr>
+    </thead>
+<?php
 
-<table>
-  <thead>
-   <tr>
-    <th>Image</th>
-    <th>Nom</th>
-    <th>Description</th>
-    <th>Lieu</th>
-    <th>Url</th>
-    <th>Editer</th>
-    <th>Supprimer</th>
-   </tr>
-  </thead>
-<?php $reponse = $pdo->query("SELECT evenement.image, evenement.nom, evenement.description, evenement.url, evenement.lieu, evenement.id FROM evenement " );
-  while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)){
-    echo "<tbody>";
-    echo "<tr>";
-      echo "<td>".$reponse_tableau["image"]."</td>";
-      echo "<td>".$reponse_tableau["nom"]."</td>";
-      echo "<td>".$reponse_tableau["description"]."</td>";
-      echo "<td>".$reponse_tableau["lieu"]."</td>";
-      echo "<td>".$reponse_tableau["url"]."</td>";
-      echo "<td><a href=\"pages/event/edit.php?id=$reponse_tableau[id]\"><i class='fas fa-edit'></i></a></td>";
-      echo "<td><a href=\"pages/event/delete.php?id=$reponse_tableau[id]\" onClick=\"return confirm('Are you sure you want to delete?')\"><i class='fas fa-trash'></i></a></td>";
-    echo "<tr>";
-    ?>
+  while ( $reponse_tableau = $reponse_req->fetch(PDO::FETCH_ASSOC)) {
+?>
+    <tbody>
+      <tr>
+      <?php
+        #$logo = $reponse_tableau["url_img"];
+        #$imageData = base64_encode(file_get_contents($logo));
+        #echo '<td><img class="img_actu" src="data:image/jpeg;base64,'.$imageData.'"></td>';
+      ?>
+      <td class="nom_event"><?php echo $reponse_tableau["nom_event"] ?></td>
+      <td class="description_event"><?php echo $reponse_tableau["description_event"] ?></td>
+      <td class="lieu_event"><?php echo $reponse_tableau["lieu_event"] ?></td>
+      <td class="url_presse"><?php echo $reponse_tableau["url_event"] ?></td>
+      <td>
+        <a href="event/edit.php?id=<?php echo $reponse_tableau["id_event"] ?>">
+          <i class='fas fa-edit'></i>
+        </a>
+      </td>
+      <td>
+        <a href="event/delete.php?id=<?php echo $reponse_tableau["id_event"]?>" onClick=" confirm('Are you sure you want to delete?')">
+          <i class='fas fa-trash'></i>
+        </a>
+      </td>
+    </tr>
 
-    <?php
-      echo "</tbody>";
-       echo "<table";
+<?php
   }
 ?>
+  </tbody>
+<table>
+
+<?php
+}
+?>
+
 

@@ -9,11 +9,8 @@ include "../inc/menu.php";
 ?>
 
 <h1 class="align block_title">Index Page Actualité</h1>
-<a href="../home.php"><i class="fas fa-home"></i></a>
+<a href="home.php"><i class="fas fa-home"></i></a>
 <a href="actu/add.php"><i class="fas fa-plus-circle"></i></a>
-
-
-
 
 <?php
   if($reponse_req->rowCount()>=1){
@@ -21,22 +18,25 @@ include "../inc/menu.php";
    <table>
     <thead>
        <tr>
-        <th>Image</th>
         <th>Titre</th>
         <th>Description</th>
         <th>Url</th>
         <th>Date</th>
         <th colspan=2>Gestion</th>
-        
+
       </tr>
-    </thead> 
-<?php 
+    </thead>
+<?php
 
   while ( $reponse_tableau = $reponse_req->fetch(PDO::FETCH_ASSOC)) {
 ?>
     <tbody>
       <tr>
-      <td class="img_actu"><?php echo $reponse_tableau["url_img"] ?></td>
+      <?php
+        #$logo = $reponse_tableau["url_img"];
+        #$imageData = base64_encode(file_get_contents($logo));
+        #echo '<td><img class="img_actu" src="data:image/jpeg;base64,'.$imageData.'"></td>';
+      ?>
       <td class="titre_actu"><?php echo $reponse_tableau["titre_actu"] ?></td>
       <td class="description_actu"><?php echo $reponse_tableau["description_actu"] ?></td>
       <td class="url_actu"><a href="http://<?php echo $reponse_tableau["url_actu"] ?>"><?php echo $reponse_tableau["url_actu"] ?></a></td>
@@ -53,13 +53,12 @@ include "../inc/menu.php";
       </td>
     </tr>
 
-<?php 
+<?php
   }
 ?>
   </tbody>
 <table>
 
-<?php 
+<?php
 }
 ?>
-

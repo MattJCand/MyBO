@@ -1,6 +1,7 @@
 <?php 
 require_once '../../inc/inc.php';
 
+
 extract($_POST);
 
 if(isset($enregistrer) && $enregistrer=="Enregistrer"){
@@ -88,7 +89,6 @@ include "../../inc/menu_2.php";
 	
 
 
-
 	<form class="form-add-actu" method="post" action="#">
 		<label for="image">Sélectionner une image pour l'évènement</label>
 		<input type="file" name="image">
@@ -100,14 +100,10 @@ include "../../inc/menu_2.php";
 		<textarea name="description" rows="10" cols="50" placeholder="Description de l'évènement">
 
 		</textarea>
-
 		<label for="url">Sélectionner une image pour l'évènement</label>
 		<input name="url" type="text"  placeholder="Site de l'actualité">
-
 		<input type="submit" name="enregistrer" value="Enregistrer">
-
 	</form>
 
 
 </main>
-
