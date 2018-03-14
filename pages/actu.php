@@ -15,7 +15,6 @@ require_once "../inc/menu.php";
    <table>
     <thead>
        <tr>
-        <th>Image</th>
         <th>Titre</th>
         <th>Description</th>
         <th>Url</th>
@@ -30,7 +29,11 @@ require_once "../inc/menu.php";
 ?>
     <tbody>
       <tr>
-      <td class="img_actu"><?php echo $reponse_tableau["url_img"] ?></td>
+      <?php
+        #$logo = $reponse_tableau["url_img"];
+        #$imageData = base64_encode(file_get_contents($logo));
+        #echo '<td><img class="img_actu" src="data:image/jpeg;base64,'.$imageData.'"></td>';
+      ?>
       <td class="titre_actu"><?php echo $reponse_tableau["titre_actu"] ?></td>
       <td class="description_actu"><?php echo $reponse_tableau["description_actu"] ?></td>
       <td class="url_actu"><a href="http://<?php echo $reponse_tableau["url_actu"] ?>"><?php echo $reponse_tableau["url_actu"] ?></a></td>

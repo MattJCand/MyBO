@@ -1,7 +1,6 @@
 <?php
-require_once '../../inc/header.php';
-require_once '../../inc/securite.php';
-require_once "../../inc/menu.php"; ?>
+  require_once "../../inc/menu_2.php";
+ ?>
 
 <h1 class="align">Ajouter un professeur</h1>
 <a href="pages/team/team.php"><i class="fas fa-home"></i></a>

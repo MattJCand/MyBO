@@ -34,7 +34,7 @@ require_once "../../inc/menu.php"; ?>
             <td><input type="text" name="description" value="<?php echo $description;?>"></td>
         </tr>
         <tr>
-            <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
+            <td><input type="hidden" name="id" value="<?php echo $_GET['id'];?>"></td>
         </tr>
     </table>
     <input type="submit" name="submit" value="submit">
