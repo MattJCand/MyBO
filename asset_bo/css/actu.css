@@ -1,0 +1,29 @@
+h1{
+	margin-bottom:50px;
+}
+
+
+.form-add-actu{
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+	width: 500px;
+	margin:auto;
+}
+
+.form-add-actu input, textarea{
+	padding: 10px;
+	margin: 0 0 10px;
+	resize: none;
+	border: 1px solid #cecece
+}
+
+.form-add-actu label{
+	padding: 0 10px 5px;
+}
+
+.form-add-actu input[type='submit']{
+	width: 100px;
+	margin: auto;
+}
+
