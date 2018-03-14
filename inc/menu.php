@@ -1,12 +1,4 @@
 <?php
-include 'inc.php';
-//deconnexion
-if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
-  session_destroy();
-  // header('location:page_connexion.php?deconnexion=success');
-  header('location:../page_connexion.php');
-}
-//securite
 if(!isset($_SESSION['membre'])){
     header('location:../page_connexion.php?membre=none');
   }
@@ -26,16 +18,17 @@ if(!isset($_SESSION['membre'])){
 
       header('location:../page_connexion.php?req=fausse');
     }
-    // else{
-
-    //  $resultat= $recherche_req_secu->fetch(PDO::FETCH_ASSOC);
-    //  echo 'Bonjour '.$resultat['login_user'];
-    //  // header('location:../page_connexion.php?securite=ok');
     
-    // }
   }
+  
 
+if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
+  session_destroy();
+  // header('location:page_connexion.php?deconnexion=success');
+  header('location:../page_connexion.php');
+} 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
