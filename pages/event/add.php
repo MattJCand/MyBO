@@ -1,7 +1,5 @@
 <?php
-require_once '../../inc/header.php';
-require_once '../../inc/securite.php';
-require_once "../../inc/menu.php";
+  require_once "../../inc/menu.php";
 ?>
 
 <h1 class="align">Ajouter un evenement</h1>
@@ -39,10 +37,10 @@ $prep="INSERT INTO horaire( heure_debut, heure_fin) VALUES ( :heure_debut, :heur
   <input name="description" type="text"  placeholder="Description Evenement" value="<?php $description;?>">
   <input name="lieu" type="text" placeholder="Lieu Evenement" value="<?php $lieu;?>">
   <input name="url" type="text"  placeholder="Url Evenement" value="<?php $url;?>">
-  <input name="url" type="file"  value="<?php $url_img;?>">
+  <input name="url_img" type="file"  value="<?php $url_img;?>">
   <input name="date_debut" type="date" value="<?php $date_debut;?>">
   <input name="date_fin" type="date" value="<?php $date_fin;?>">
-  <input name="horaire_debut" type="date" value="<?php $heure_debut;?>">
-  <input name="horaire_fin" type="date" value="<?php $heure_fin;?>">
+  <input name="horaire_debut" type="time" value="<?php $heure_debut;?>">
+  <input name="horaire_fin" type="time" value="<?php $heure_fin;?>">
   <input type="submit" name="submit" value="submit">
 </form>
