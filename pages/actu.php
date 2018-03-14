@@ -1,8 +1,11 @@
 <?php
-require_once "../inc/menu.php";
+require_once '../inc/inc.php';
 
   $req="SELECT *, date_format(date_debut, '%d/%m/%Y') AS date_fr FROM actualite a, image i, date d WHERE a.id_image= i.id_img AND a.id_date=d.id_date";
   $reponse_req = $bdd->query($req);
+
+include "../inc/menu.php";
+
 ?>
 
 <h1 class="align block_title">Index Page Actualité</h1>
@@ -44,7 +47,7 @@ require_once "../inc/menu.php";
         </a>
       </td>
       <td>
-        <a href="actu/delete.php?id=<?php echo $reponse_tableau["id_actu"]?>" onClick=" confirm('Are you sure you want to delete?')">
+        <a href="actu/delete.php?id=$reponse_tableau[id]">
           <i class='fas fa-trash'></i>
         </a>
       </td>

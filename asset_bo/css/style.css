@@ -1,0 +1,48 @@
+@import url('navbar.css');
+@import url('actu.css');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px
+}
+
+.majuscule{
+  text-transform: uppercase;
+}
+
+.align{
+  text-align: center;
+}
+
+.img_vignette{
+  width:50%;
+}
+
+
+
+
+@import url('navbar.css');
+table{
+	margin:auto;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+   	padding: 10px
+
+}
+
+.img_actu{
+	width: 100px
+}
+
+.titre_actu{
+	width: 100px;
+}
+
+.description_actu{
+	width: 800px
+}
+

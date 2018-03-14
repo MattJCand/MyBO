@@ -1,11 +1,4 @@
-<?php
-include 'inc.php';
-
-if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
-  session_destroy();
-  // header('location:page_connexion.php?deconnexion=success');
-  header('location:../../page_connexion.php');
-}
+<?php 
 
 if(!isset($_SESSION['membre'])){
     header('location:../../page_connexion.php?membre=none');
@@ -26,16 +19,18 @@ if(!isset($_SESSION['membre'])){
 
       header('location:../../page_connexion.php?req=fausse');
     }
-    // else{
-
-    //  $resultat= $recherche_req_secu->fetch(PDO::FETCH_ASSOC);
-    //  echo 'Bonjour '.$resultat['login_user'];
-    //  // header('location:../page_connexion.php?securite=ok');
     
-    // }
   }
+  
+
+if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
+  session_destroy();
+  // header('location:page_connexion.php?deconnexion=success');
+  header('location:../../page_connexion.php');
+} 
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -45,7 +40,7 @@ if(!isset($_SESSION['membre'])){
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
    
-    <link rel='stylesheet' href='../../asset/css/style.css' />
+    <link rel='stylesheet' href='../../asset_bo/css/style.css' />
   </head>
 <body>
 
@@ -54,7 +49,7 @@ if(!isset($_SESSION['membre'])){
     <div class="container">
       <div class="bloc-logo-nav">
         <a href="../home.php">
-          <img src="../../asset/img/logo_final.png" alt="logo Planete Manga">
+          <img src="../../asset_bo/img/logo_final.png" alt="logo Planete Manga">
         </a>
       </div>
 

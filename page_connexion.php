@@ -1,5 +1,5 @@
 <?php
-include "inc/header.php"; 
+include "inc/inc.php"; 
 
 
 
@@ -85,25 +85,7 @@ if(isset($_POST['connexion']) && $_POST['connexion']=="Se connecter")
 		header('location:page_connexion.php?connexion=echec1');
 	}
 }
-    // if( isset($_POST['login']) && isset($_POST['mdp'])){
-    //     $login = $_POST['login'];
-    //     $mdp = $_POST['mdp'];
-    //     $req = "SELECT * FROM utilisateur WHERE login_user = :login AND mdp_user = :mdp";
-    //     $resultat = $pdo->prepare($req);
-    //     $resultat->bindParam(':login', $login, PDO::PARAM_STR);
-    //     $resultat->bindParam(':mdp', $mdp, PDO::PARAM_STR);
-    //     $resultat->execute();
-
-    //   if ( $resultat->rowCount() === 1){
-    //      session_start();
-    //      $_SESSION['login'] = $_POST['login'];
-    //      $_SESSION['mdp'] = $_POST['mdp'];
-    //      header('Location:pages/home.php');
-    //    } 
-    //    else {
-    //      header('Location:index.php');
-    //    }
-    //  }
+   
 
 
 //Affichage des erreurs selon les différents cas	
@@ -135,7 +117,7 @@ if(isset($_GET['action']) && $_GET['action']=='udp_mdp'){
 	
 
 	<header class="align homeLogo">
-	  <img src="asset/img/logo_final.png" alt="logo Planete Manga">
+	  <img src="asset_bo/img/logo_final.png" alt="logo Planete Manga">
 	  <h1 class="align">Back Office</h1>
 	</header>
 
