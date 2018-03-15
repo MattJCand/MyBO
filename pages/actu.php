@@ -22,7 +22,7 @@ include "../inc/menu.php";
           <th>Image</th>
           <th>Titre</th>
           <th>Description</th>
-          <th>Url</th>
+          <th>Site internet</th>
           <th>Date</th>
           <th colspan=2>Gestion</th>
 
@@ -34,27 +34,27 @@ include "../inc/menu.php";
   ?>
       <tbody>
         <tr>
-        <td class="img_actu"><img src="<?php echo $reponse_tableau["url_actu"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
-        <td class="titre_actu"><?php echo $reponse_tableau["titre_actu"] ?></td>
-        <td class="description_actu"><?php echo $reponse_tableau["description_actu"] ?></td>
-        <td class="url_actu"><a href="http://<?php echo $reponse_tableau["url_actu"] ?>"><?php echo $reponse_tableau["url_actu"] ?></a></td>
-        <td class="date_actu"><?php echo $reponse_tableau["date_fr"] ?></td>
-        <td>
-          <a href="actu/edit.php?id=<?php echo $reponse_tableau["id_actu"]; ?>">
-            <i class='fas fa-edit'></i>
-          </a>
-        </td>
-        <td>
-          <a href="actu/delete.php?id=<?php echo $reponse_tableau["id_actu"]; ?>">
-            <i class='fas fa-trash'></i>
-          </a>
-        </td>
-      </tr>
+          <td class="img_table"><img src="<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
+          <td class="titre_table"><?php echo $reponse_tableau["titre_actu"] ?></td>
+          <td class="description-table description-table-actu"><?php echo $reponse_tableau["description_actu"] ?></td>
+          <td class="url_table"><a href="http://<?php echo $reponse_tableau["url_actu"] ?>"><?php echo $reponse_tableau["url_actu"] ?></a></td>
+          <td class="date_table"><?php echo $reponse_tableau["date_fr"] ?></td>
+          <td>
+            <a href="actu/edit.php?id=<?php echo $reponse_tableau["id_actu"]; ?>">
+              <i class='fas fa-edit'></i>
+            </a>
+          </td>
+          <td>
+            <a href="actu/delete.php?id=<?php echo $reponse_tableau["id_actu"]; ?>">
+              <i class='fas fa-trash'></i>
+            </a>
+          </td>
+        </tr>
 
   <?php
     }
   ?>
-    </tbody>
+      </tbody>
   <table>
 
 </main>

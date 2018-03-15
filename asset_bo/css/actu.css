@@ -2,12 +2,9 @@ h1{
 	margin-bottom:50px;
 }
 
-.table-actu{
-	width: 95%
-}
-.table-actu tbody .description_actu{
-	min-width: 700px;
-	text-align: left;
+
+table .description-table-actu{
+ 	width: 700px
 }
 
 .form-actu{

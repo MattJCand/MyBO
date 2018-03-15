@@ -58,20 +58,23 @@ if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
           <li><a href="../home.php">Accueil <i class="fas fa-home"></i></a></li>
           <li class="submenu"><a href="#"">L'école <div class="icon-menu">&#10094;</div></a>
             <ul>
+
               <li><a href="../galerie.php">Galerie</a></li>
-               <li><a href="../member.php">Carte Membre</a></li>
+              <li><a href="../team.php">Equipe</a></li>
+              <li><a href="../member.php">Carte Membre</a></li>
+               
             </ul>
           </li>
           <li><a href="../cours.php">Cours</a></li>
-          <li><a href="../team.php">Equipe</a></li>
           <li class="submenu"><a href="#">Divers <div class="icon-menu">&#10094;</div></a>
             <ul>
-              <li><a href="../actu.php">Actualité</a></li>
+              <li><a href="../actu.php">Actualités</a></li>
               <li><a href="../event.php">Evénements</a></li>
               <li><a href="../presse.php">Presse</a></li>
             </ul>
           </li>
           <li><a href="../partner.php">Nos partenaires</a></li>
+          
           <li><a href="?action=deconnexion">Déconnexion</a></li>
         </ul>
       </nav>

@@ -100,6 +100,8 @@ include "../../inc/menu_2.php";
 ?>
 <main>
 	<h1 class="align">Gestion des actualités - Création -</h1>
+	 <a href="../actu.php"><i class="fas fa-arrow-circle-left"></i>
+	 </a>
 	
 	<div >
 		<p class="resultat"><?php echo $msg; ?></p>
@@ -116,8 +118,9 @@ include "../../inc/menu_2.php";
 		<label for="description">Description de l'actualité *</label>
 		<textarea name="description" rows="10" cols="50" placeholder="Description de l'évènement"></textarea>
 
-		<label for="url">Site pour l'actualité</label>
+		<label for="url">Site de l'actualité</label>
 		<input name="url" type="text"  placeholder="Site de l'actualité">
+		
 		<div class="btn-form-bloc">
 
 		    <input class="btn-reset" type="reset" name="effacer" value="Effacer">
@@ -132,4 +135,4 @@ include "../../inc/menu_2.php";
 <?php
 include "../../inc/footer.php";
 
- ?>
+?>

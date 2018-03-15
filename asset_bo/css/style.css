@@ -1,7 +1,7 @@
 
 @import url('navbar.css');
 @import url('actu.css');
-
+@import url('partner.css');
 
 
 .align{
@@ -16,8 +16,12 @@
   margin: 30px;
 }
 
+i{
+  color: #CB3B4D
+}
+
 main{
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(../img/mascotte_planete_manga.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -25,6 +29,8 @@ main{
 }
 table{
 	margin:auto;
+  width: 95%
+
 }
 table, th, td {
     border: 1px solid black;
@@ -34,12 +40,17 @@ table, th, td {
 
 }
 
-.img_actu{
-	width: 100px
+table .description-table{
+  text-align: left
 }
 
-.titre_actu{
-	width: 100px;
+
+table .img_table{
+  width: 100px
+}
+
+table .titre_table{
+  width: 100px;
 }
 
 .bloc-btn-creation{
