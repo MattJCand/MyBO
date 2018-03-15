@@ -86,7 +86,18 @@ if(isset($modifier) && $modifier=="Modifier"){
                     $logo_partenaire=$resultat_recherche_req_unique_img['url_img'];
 
                     //requete de mise a jour
-                    $req_udp_partenaire="UPDATE partenaire p, image i SET i.url_img= :logo_partenaire_udp , i.date_creation_img= NOW(), p.nom_partenaire= :nom_partenaire_udp, p.description_partenaire= :description_partenaire_udp, p.url_partenaire= :url_partenaire_udp , p.adresse_partenaire= :adresse_partenaire_udp WHERE p.id_image=i.id_img AND p.id_partenaire= :id";
+                    $req_udp_partenaire="
+                    UPDATE partenaire p, image i 
+                    SET 
+                        i.url_img= :logo_partenaire_udp ,
+                        i.date_creation_img= NOW(),
+                        p.nom_partenaire= :nom_partenaire_udp,
+                        p.description_partenaire= :description_partenaire_udp,
+                        p.url_partenaire= :url_partenaire_udp ,
+                        p.adresse_partenaire= :adresse_partenaire_udp 
+                    WHERE 
+                        p.id_image=i.id_img
+                    AND p.id_partenaire= :id " ;
 
                     $recherche_req_udp_partenaire=$bdd->prepare($req_udp_partenaire);
                     $recherche_req_udp_partenaire->bindParam(':id', $id, PDO::PARAM_INT);
@@ -103,11 +114,7 @@ if(isset($modifier) && $modifier=="Modifier"){
                 }
 
             }
-
-
-
             
-
         }
     }
     else{
@@ -141,10 +148,10 @@ require_once "../../inc/menu_2.php";
         <label for="description_partenaire">Description du partenaire:</label>
         <textarea name="description_partenaire" rows="10" cols="50" ><?php echo $resultat_req_verif_partenaire['description_partenaire'];?></textarea>
 
-        <label for="adresse_partenaire">Titre du partenaire:</label>
+        <label for="adresse_partenaire">Adresse du partenaire:</label>
         <input type="text" name="adresse_partenaire" value="<?php echo $resultat_req_verif_partenaire['adresse_partenaire'];?>">
 
-        <label for="url_partenaire"></label>
+        <label for="url_partenaire">Site du partenaire:</label>
         <input type="text" name="url_partenaire" value="<?php echo $resultat_req_verif_partenaire['url_partenaire'];?>">
 
         <div class="btn-form-bloc">
