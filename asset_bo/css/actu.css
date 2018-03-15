@@ -3,7 +3,7 @@ h1{
 }
 
 
-.form-add-actu{
+.form-add-actu, .form-edit-actu{
 	display: flex;
 	justify-content: center;
 	flex-flow: column;
@@ -11,19 +11,38 @@ h1{
 	margin:auto;
 }
 
-.form-add-actu input, textarea{
+.form-add-actu input, textarea, .form-edit-actu input, textarea{
+	
 	padding: 10px;
 	margin: 0 0 10px;
 	resize: none;
 	border: 1px solid #cecece
 }
 
-.form-add-actu label{
+.form-add-actu label, .form-edit-actu label{
 	padding: 0 10px 5px;
 }
 
-.form-add-actu input[type='submit']{
-	width: 100px;
-	margin: auto;
+.btn-form-bloc{
+	display: inline-block;
+	text-align: right
+}
+
+
+
+.form-add-actu .btn-submit, .form-add-actu .btn-reset,
+.form-edit-actu .btn-submit, .form-edit-actu .btn-reset{
+	min-width: 100px;
+	margin-left: 20px
+}
+
+.form-edit-actu .edit-actu-img-bloc{
+	width: 50%;
+	border: 1px solid;
+	margin:10px auto;
+
+}
+.form-edit-actu .edit-actu-img-bloc img{
+	width: 100%
 }
 

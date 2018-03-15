@@ -1,4 +1,6 @@
 <?php
+require_once '../inc/inc.php';
+
 require_once "../inc/menu.php";
 
   $req="SELECT *, date_format(date_debut, '%d/%m/%Y') AS date_fr FROM evenement e, image i, date d, horaire h WHERE e.id_image= i.id_img AND e.id_date=d.id_date AND e.id_horaire=h.id_horaire";

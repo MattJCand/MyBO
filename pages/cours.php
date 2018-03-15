@@ -1,4 +1,5 @@
 <?php
+require_once '../inc/inc.php';
 require_once "../inc/menu.php";
  ?>
 

@@ -21,7 +21,7 @@ if(!isset($_SESSION['membre'])){
     }
     
   }
-  
+
 
 if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
   session_destroy();
@@ -55,7 +55,7 @@ if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
 
       <nav class="menu majuscule">
         <ul class="text-center">
-          <li><a href="home.php">Accueil</a></li>
+          <li><a href="../home.php">Accueil <i class="fas fa-home"></i></a></li>
           <li class="submenu"><a href="#"">L'école</a>
             <ul>
               <li><a href="../actu.php">Actualité</a></li>

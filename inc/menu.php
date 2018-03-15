@@ -53,8 +53,8 @@ if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
 
       <nav class="menu majuscule">
         <ul class="text-center">
-          <li><a href="home.php">Accueil</a></li>
-          <li class="submenu"><a href="home.php">L'école</a>
+          <li><a href="home.php">Accueil <i class="fas fa-home"></i></a></li>
+          <li class="submenu"><a href="#">L'école</a>
             <ul>
               <li><a href="actu.php">Actualité</a></li>
               <li><a href="galerie.php">Galerie</a></li>
@@ -63,7 +63,7 @@ if(isset($_GET['action']) && $_GET['action']=='deconnexion'){
           </li>
           <li><a href="cours.php">Cours</a></li>
           <li><a href="team.php">Equipe</a></li>
-          <li class="submenu"><a href="home.php">Divers</a>
+          <li class="submenu"><a href="#">Divers</a>
             <ul>
               <li><a href="event.php">Evénements</a></li>
               <li><a href="presse.php">Presse</a></li>
