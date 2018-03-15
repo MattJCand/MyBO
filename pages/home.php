@@ -7,7 +7,7 @@ require_once "../inc/menu.php";
 
 
 
-<div class="align homeLogo block_title">
+<div class="text-center">
   <h1 class="align">Accueil Back Office</h1>
 </div>
 

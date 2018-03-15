@@ -2,8 +2,16 @@ h1{
 	margin-bottom:50px;
 }
 
+.table-actu{
+	width: 95%
+}
+.table-actu tbody .description_actu{
+	min-width: 700px;
+	text-align: left;
+}
 
-.form-add-actu, .form-edit-actu{
+.form-actu{
+	padding: 20px 0;
 	display: flex;
 	justify-content: center;
 	flex-flow: column;
@@ -11,7 +19,7 @@ h1{
 	margin:auto;
 }
 
-.form-add-actu input, textarea, .form-edit-actu input, textarea{
+.form-actu input, textarea{
 	
 	padding: 10px;
 	margin: 0 0 10px;
@@ -19,7 +27,7 @@ h1{
 	border: 1px solid #cecece
 }
 
-.form-add-actu label, .form-edit-actu label{
+.form-actu label{
 	padding: 0 10px 5px;
 }
 
@@ -30,19 +38,29 @@ h1{
 
 
 
-.form-add-actu .btn-submit, .form-add-actu .btn-reset,
-.form-edit-actu .btn-submit, .form-edit-actu .btn-reset{
+.form-actu .btn-submit, .form-actu .btn-reset{
 	min-width: 100px;
 	margin-left: 20px
 }
 
-.form-edit-actu .edit-actu-img-bloc{
+.form-actu .edit-actu-img-bloc{
 	width: 50%;
 	border: 1px solid;
 	margin:10px auto;
 
 }
-.form-edit-actu .edit-actu-img-bloc img{
+.form-actu .edit-actu-img-bloc img{
 	width: 100%
 }
 
+.form-actu .btn-oui, .form-actu .btn-non{
+	margin: 10px auto;
+	max-width: 200px;
+	min-width: 100px;
+	transition: all 0.3s;
+}
+
+.form-actu .btn-oui:hover, .form-actu .btn-non:hover{
+	color: #fff;
+	background-color: #CB3B4D;
+}

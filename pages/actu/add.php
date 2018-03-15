@@ -99,14 +99,14 @@ include "../../inc/menu_2.php";
 
 ?>
 <main>
-	<h1 class="align">Ajouter une actualité</h1>
+	<h1 class="align">Gestion des actualités - Création -</h1>
 	
 	<div >
 		<p class="resultat"><?php echo $msg; ?></p>
 	</div>
 
 
-	<form class="form-add-actu" method="post" action="#">
+	<form class="form-actu" method="post" action="#">
 		<label for="image">Sélectionner une image pour l'actualité *</label>
 		<input type="file" name="image">
 

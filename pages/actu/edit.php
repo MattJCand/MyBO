@@ -68,13 +68,13 @@ require_once "../../inc/menu_2.php";
 
 ?>
 <main>
-    <h1 class="align">Actualité - Edition -</h1>
+    <h1 class="text-center">Gestion des actualités - Edition -</h1>
 
     <div>
         <p class="resultat"><?php echo $msg; ?></p>
     </div>
 
-    <form class="form-edit-actu" method="post" action="#">
+    <form class="form-actu" method="post" action="#">
         <label for="img_actu">Image de l'actu :</label>
         <div class="edit-actu-img-bloc">  
         <img src="<?php echo $resultat_req_verif_actu['url_img']; ?>" alt="<?php echo $resultat_req_verif_actu['url_img']; ?>">
@@ -97,6 +97,7 @@ require_once "../../inc/menu_2.php";
             <input class="btn-submit" type="submit" name="modifier" value="Modifier">
 
         </div>
+
     </form>
 
 
