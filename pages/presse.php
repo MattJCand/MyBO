@@ -1,4 +1,6 @@
 <?php
+require_once '../inc/inc.php';
+
 require_once "../inc/menu.php";
 
   $req="SELECT * FROM presse p, image i WHERE p.id_image= i.id_img";

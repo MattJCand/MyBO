@@ -1,15 +1,8 @@
+
 @import url('navbar.css');
 @import url('actu.css');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 14px
-}
+@import url('partner.css');
 
-.majuscule{
-  text-transform: uppercase;
-}
 
 .align{
   text-align: center;
@@ -19,12 +12,25 @@
   width:50%;
 }
 
+.block_title{
+  margin: 30px;
+}
 
+i{
+  color: #CB3B4D
+}
 
+main{
+  min-height: 100vh;
+  background-image: url(../img/mascotte_planete_manga.png);
+  background-position: center;
+  background-repeat: no-repeat;
 
-@import url('navbar.css');
+}
 table{
 	margin:auto;
+  width: 95%
+
 }
 table, th, td {
     border: 1px solid black;
@@ -34,15 +40,45 @@ table, th, td {
 
 }
 
-.img_actu{
-	width: 100px
+table .description-table{
+  text-align: left
 }
 
-.titre_actu{
-	width: 100px;
+
+table .img_table{
+  width: 100px
 }
 
-.description_actu{
-	width: 800px
+table .titre_table{
+  width: 100px;
 }
 
+.bloc-btn-creation{
+  margin-bottom: 30px;
+  text-align:center;
+}
+
+.btn-creation{
+  text-decoration: none
+}
+
+/*formulaire d'edition*/
+
+
+form{
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  width: 500px;
+  margin:auto;
+}
+form .edit-img-bloc{
+  width: 50%;
+  border: 1px solid;
+  margin:10px auto;
+
+}
+form .edit-img-bloc img{
+  width: 100%
+}

@@ -3,27 +3,44 @@ h1{
 }
 
 
-.form-add-actu{
-	display: flex;
-	justify-content: center;
-	flex-flow: column;
-	width: 500px;
-	margin:auto;
+table .description-table-actu{
+ 	width: 700px
 }
 
-.form-add-actu input, textarea{
+
+form input, textarea{
+	
 	padding: 10px;
 	margin: 0 0 10px;
 	resize: none;
 	border: 1px solid #cecece
 }
 
-.form-add-actu label{
+form label{
 	padding: 0 10px 5px;
 }
 
-.form-add-actu input[type='submit']{
-	width: 100px;
-	margin: auto;
+.btn-form-bloc{
+	display: inline-block;
+	text-align: right
 }
 
+
+
+form .btn-submit, form .btn-reset{
+	min-width: 100px;
+	margin-left: 20px
+}
+
+
+form .btn-oui, form .btn-non{
+	margin: 10px auto;
+	max-width: 200px;
+	min-width: 100px;
+	transition: all 0.3s;
+}
+
+form .btn-oui:hover, form .btn-non:hover{
+	color: #fff;
+	background-color: #CB3B4D;
+}

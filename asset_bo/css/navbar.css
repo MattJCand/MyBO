@@ -1,8 +1,4 @@
-/*********************************
 
-
-
-**********************************/
 *{
   margin: 0;
   padding: 0;
@@ -10,12 +6,6 @@
   font-family: 'Roboto-light' ,sans-serif;
 }
 
-.container{
-  width: 100%;
-  max-width: 1440px;
-  margin: auto;
-  padding: 0 25px;
-}
 
 
 
@@ -43,11 +33,7 @@ section{
   width: 100%;
   height: inherit;
 }
-/**************************************
 
-            VERSION DESKTOP
-
-****************************************/
 
 header{
   position: fixed;
@@ -67,6 +53,7 @@ header .container{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 15px
 
 }
 #btn-menu{
@@ -116,10 +103,6 @@ header label{
   width: 150px;
 }
 
-.submenu-responsive{
-  display: none
-}
-
 .bloc-logo-nav{
   display: flex;
   width: 230px;
@@ -131,18 +114,11 @@ header label{
 }
 
 
-.logo-desktop{
-  display: inline;
+.icon-menu{
+    margin-left : 10px; 
+    float: right;
+    transform: rotate(-90deg);
 }
-
-.logo-tablette{
-  display: none
-}
-
-.logo-mobile{
-  display: none;
-}
-
 
 .spacer{
   height: 72px
