@@ -61,3 +61,24 @@ table .titre_table{
 .btn-creation{
   text-decoration: none
 }
+
+/*formulaire d'edition*/
+
+
+form{
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  width: 500px;
+  margin:auto;
+}
+form .edit-img-bloc{
+  width: 50%;
+  border: 1px solid;
+  margin:10px auto;
+
+}
+form .edit-img-bloc img{
+  width: 100%
+}

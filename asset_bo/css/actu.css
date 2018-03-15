@@ -7,16 +7,8 @@ table .description-table-actu{
  	width: 700px
 }
 
-.form-actu{
-	padding: 20px 0;
-	display: flex;
-	justify-content: center;
-	flex-flow: column;
-	width: 500px;
-	margin:auto;
-}
 
-.form-actu input, textarea{
+form input, textarea{
 	
 	padding: 10px;
 	margin: 0 0 10px;
@@ -24,7 +16,7 @@ table .description-table-actu{
 	border: 1px solid #cecece
 }
 
-.form-actu label{
+form label{
 	padding: 0 10px 5px;
 }
 
@@ -35,29 +27,20 @@ table .description-table-actu{
 
 
 
-.form-actu .btn-submit, .form-actu .btn-reset{
+form .btn-submit, form .btn-reset{
 	min-width: 100px;
 	margin-left: 20px
 }
 
-.form-actu .edit-actu-img-bloc{
-	width: 50%;
-	border: 1px solid;
-	margin:10px auto;
 
-}
-.form-actu .edit-actu-img-bloc img{
-	width: 100%
-}
-
-.form-actu .btn-oui, .form-actu .btn-non{
+form .btn-oui, form .btn-non{
 	margin: 10px auto;
 	max-width: 200px;
 	min-width: 100px;
 	transition: all 0.3s;
 }
 
-.form-actu .btn-oui:hover, .form-actu .btn-non:hover{
+form .btn-oui:hover, form .btn-non:hover{
 	color: #fff;
 	background-color: #CB3B4D;
 }

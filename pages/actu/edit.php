@@ -76,8 +76,8 @@ require_once "../../inc/menu_2.php";
 
     <form class="form-actu" method="post" action="#">
         <label for="img_actu">Image de l'actu :</label>
-        <div class="edit-actu-img-bloc">  
-        <img src="<?php echo $resultat_req_verif_actu['url_img']; ?>" alt="<?php echo $resultat_req_verif_actu['url_img']; ?>">
+        <div class="edit-img-bloc">  
+            <img src="<?php echo $resultat_req_verif_actu['url_img']; ?>" alt="<?php echo $resultat_req_verif_actu['url_img']; ?>">
         </div> 
         
         <input type="file" name="img_actu">
