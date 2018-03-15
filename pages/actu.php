@@ -37,7 +37,7 @@ include "../inc/menu.php";
           <td class="img_table"><img src="<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
           <td class="titre_table"><?php echo $reponse_tableau["titre_actu"] ?></td>
           <td class="description-table description-table-actu"><?php echo $reponse_tableau["description_actu"] ?></td>
-          <td class="url_table"><a href="https://<?php echo $reponse_tableau["url_actu"] ?>"><?php echo $reponse_tableau["url_actu"] ?></a></td>
+          <td class="url_table"><a href="https://<?php echo $reponse_tableau["url_actu"] ?>" target="blank"><?php echo $reponse_tableau["url_actu"] ?></a></td>
           <td class="date_table"><?php echo $reponse_tableau["date_fr"] ?></td>
           <td>
             <a href="actu/edit.php?id=<?php echo $reponse_tableau["id_actu"]; ?>">
