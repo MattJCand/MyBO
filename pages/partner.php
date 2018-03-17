@@ -40,7 +40,7 @@ require_once "../inc/menu.php";
           <td class="nom_table"><?php echo $reponse_tableau["nom_partenaire"] ?></td>
           <td class="description-table description-table-partenaire"><?php echo $reponse_tableau["description_partenaire"] ?></td>
           <td class="adresse_table"><?php echo $reponse_tableau["adresse_partenaire"] ?></td>
-          <td class="url_table"><?php echo $reponse_tableau["url_partenaire"] ?></td>
+          <td class="url_table"><a href="https://<?php echo $reponse_tableau["url_partenaire"]; ?>" target="blank" ><?php echo $reponse_tableau["url_partenaire"] ?></a></td>
           <td>
             <a href="partner/edit.php?id=<?php echo $reponse_tableau["id_partenaire"] ?>">
               <i class='fas fa-edit'></i>
