@@ -1,11 +1,11 @@
-<?php 
+<?php
 require_once '../../inc/inc.php';
 
 
 extract($_POST);
 
 if(isset($enregistrer) && $enregistrer=="Enregistrer"){
-	
+
 	if(isset($image) && isset($titre) && isset($description)){
 		if(empty($image)  || empty($titre) || empty($description))
 		{
@@ -31,7 +31,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 				$insertion_img_actu->execute();
 
 				// echo 'img_enregistrée<br>';
-				
+
 				$recherche_req_unique_img->execute();
 
 				if($insertion_img_actu->rowCount()==1){
@@ -62,7 +62,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 
 					}
 					$recuperation_date = $recherche_req_unique_date->fetch(PDO::FETCH_ASSOC);
-					
+
 					//variable qui stock l'id de la donnée date
 					$id_date_actu=$recuperation_date['id_date'];
 
@@ -101,7 +101,7 @@ include "../../inc/menu_2.php";
 	<h1 class="align">Gestion des actualités - Création -</h1>
 	 <a href="../actu.php"><i class="fas fa-arrow-circle-left"></i>
 	 </a>
-	
+
 	<div >
 		<p class="resultat"><?php echo $msg; ?></p>
 	</div>
@@ -119,7 +119,7 @@ include "../../inc/menu_2.php";
 
 		<label for="url">Site de l'actualité</label>
 		<input name="url" type="text"  placeholder="Site de l'actualité">
-		
+
 		<div class="btn-form-bloc">
 
 		    <input class="btn-reset" type="reset" name="effacer" value="Effacer">
