@@ -94,7 +94,6 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 	}
 }
 
-
 include "../../inc/menu_2.php";
 
 ?>
