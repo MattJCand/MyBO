@@ -50,7 +50,7 @@ require_once "../inc/menu.php";
         </a>
       </td>
       <td>
-        <a href="team/delete.php?id=<?php echo $reponse_tableau["id_prof"]?>" onClick=" confirm('Are you sure you want to delete?')">
+        <a href="team/delete.php?id=<?php echo $reponse_tableau["id_prof"]?>">
           <i class='fas fa-trash'></i>
         </a>
       </td>
