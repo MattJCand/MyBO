@@ -42,6 +42,7 @@ elseif(isset($oui) && $oui=="Oui"){
     	$resultat_image_actu=$recherche_req_id_img->fetch(PDO::FETCH_ASSOC);
 
     	$id_image_a_supprimer=$resultat_image_actu['id_image'];
+        $url_image_a_supprimer=$resultat_image_actu['url_img'];
 
     }
     //supression de l'actu
@@ -58,6 +59,7 @@ elseif(isset($oui) && $oui=="Oui"){
     $suppression_req_delete_img_actu->bindParam(':id_image_a_supprimer', $id_image_a_supprimer, PDO::PARAM_INT);
     $suppression_req_delete_img_actu->execute();
 
+    unlink('../../upload_img/actualite/'.$url_image_a_supprimer);
     header('location:../actu.php?delete=success');
 }
 
