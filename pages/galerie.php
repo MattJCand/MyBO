@@ -1,7 +1,7 @@
 <?php
 require_once '../inc/inc.php';
 
-  $req="SELECT * FROM  image i";
+  $req="SELECT * FROM  galerie ";
   $reponse_req = $bdd->query($req);
 
 include "../inc/menu.php";
@@ -19,8 +19,9 @@ include "../inc/menu.php";
      <table class="table-galerie">
     <thead>
        <tr>
-        <th>Url Image</th>
-        <th>Date création Image</th>
+        <th>Nom Image</th>
+        <th>Url de l'image</th>
+        <th>Affichage de l'image dans la gallerie</th>
         <th colspan=2>Gestion</th>
       </tr>
     </thead>
@@ -30,15 +31,16 @@ include "../inc/menu.php";
   ?>
       <tbody>
         <tr>
-          <td class="img_table"><img src="<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
-          <td class="date_image_table"><?php echo $reponse_tableau["date_creation_img"] ?></td>
-          <td>
-            <a href="galerie/edit.php?id=<?php echo $reponse_tableau["id_img"]; ?>">
+          <td class="nom_img_galerie_table"><?php echo $reponse_tableau["nom_img"] ?></td>
+          <td class="url_img_galerie_table"><img src="<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
+          <td class="display_img_galerie_table"><?php echo $reponse_tableau["display_img"] ?></td>
+           <td>
+            <a href="galerie/edit.php?id=<?php echo $reponse_tableau["id_galerie"]; ?>">
               <i class='fas fa-edit'></i>
             </a>
           </td>
           <td>
-            <a href="galerie/delete.php?id=<?php echo $reponse_tableau["id_img"]; ?>">
+            <a href="galerie/delete.php?id=<?php echo $reponse_tableau["id_galerie"]; ?>">
               <i class='fas fa-trash'></i>
             </a>
           </td>

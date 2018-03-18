@@ -104,7 +104,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
           $insertion_req_insert_event->execute();
         }
         else{
-          $msg='Erreur sur la recher d\'image';
+          $msg='Erreur sur la recherche d\'image';
         }
 
       }
