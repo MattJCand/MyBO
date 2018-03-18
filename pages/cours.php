@@ -1,14 +1,15 @@
 <?php
 require_once '../inc/inc.php';
 
-  $req="SELECT * FROM cours ";
+  $req="SELECT * FROM cours c, cours_horaire_prevu chp, cours_jours_prevu cjp WHERE chp.id_cours=c.id_cours AND cjp.id_cours=c.id_cours";
   $reponse_req = $bdd->query($req);
 
 include "../inc/menu.php";
 
 ?>
 <main>
-  <h1 class="text-center">Gestion des Cours</h1>
+  <h1 class="text-center">Gestion des Cours</h1
+
   <?php
     if($reponse_req->rowCount()>=1){
   ?>
@@ -20,8 +21,7 @@ include "../inc/menu.php";
           <th>Heure de debut</th>
           <th>Heure de fin</th>
           <th>Jour prevu</th>
-          <th colspan=2>Gestion</th>
-
+          <th>Gestion</th>
         </tr>
       </thead>
   <?php
@@ -32,6 +32,7 @@ include "../inc/menu.php";
         <tr>
           <td class="titre_table"><?php echo $reponse_tableau["intitule_cours"] ?></td>
           <td class="description-table description-table-cours"><?php echo $reponse_tableau["description_cours"] ?></td>
+
           <td>
             <a href="cours/edit.php?id=<?php echo $reponse_tableau["id_cours"]; ?>">
               <i class='fas fa-edit'></i>
@@ -51,6 +52,13 @@ include "../inc/menu.php";
 
 include "../inc/footer.php";
 ?>
+
+
+
+
+
+
+
 
 
 

@@ -98,7 +98,7 @@ require_once "../../inc/menu_2.php";
         <input type="text" name="lieu_event" value="<?php echo $resultat_req_verif_event['lieu_event'];?>">
 
         <label for="lieu_event">Date de l'événement</label>
-        <input type="text" name="date_event" value="<?php echo $resultat_req_verif_event['date_fr'];?>">
+        <input type="date" name="date_event" value="<?php echo $resultat_req_verif_event['date_fr'];?>">
 
         <div class="btn-form-bloc">
 
