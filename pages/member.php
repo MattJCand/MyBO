@@ -1,33 +1,71 @@
 <?php
 require_once '../inc/inc.php';
 
-require_once "../inc/menu.php";
+  $req="SELECT *  FROM tarif_cm t, avantage_cm a ";
+  $reponse_req = $bdd->query($req);
+
+include "../inc/menu.php";
+
+?>
+<main>
+  <h1 class="text-center">Gestion de la page Membre</h1>
+
+  <?php
+    if($reponse_req->rowCount()>=1){
+  ?>
+     <table class="table-member">
+      <thead>
+         <tr>
+          <th>Catégorie</th>
+          <th>Prix Tarif</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+  <?php
+
+    while ( $reponse_tableau = $reponse_req->fetch(PDO::FETCH_ASSOC)) {
+  ?>
+      <tbody>
+        <tr>
+          <td class="categorie_tarif_cm"><?php echo $reponse_tableau["categorie_tarif_cm"] ?></td>
+          <td class="prix_tarif_cm"><?php echo $reponse_tableau["prix_tarif_cm"] ?></td>
+          <td>
+            <a href="member/edit_un.php?id=<?php echo $reponse_tableau["id_tarif_cm"] ?>">
+              <i class='fas fa-edit'></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+  <table>
+
+    <table class="table-member">
+      <thead>
+         <tr>
+          <th>Avantage</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+         <td class="description_avantage_cm"><?php echo $reponse_tableau["description_avantage_cm"] ?></td>
+         <td>
+            <a href="member/edit_deux.php?id=<?php echo $reponse_tableau["id_avantage_cm"] ?>">
+              <i class='fas fa-edit'></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  <?php
+    }
+  ?>
+
+</main>
+<?php
+}
+
+include "../inc/footer.php";
 ?>
 
-<h1 class="align block_title">Index Page Membre</h1>
-<a href="home.php"><i class="fas fa-home"></i></a>
-
-<table>
-  <thead>
-   <tr>
-    <th>Description</th>
-    <th>Prix Enfant</th>
-    <th>Prix Adulte</th>
-    <th>Editer</th>
-   </tr>
-  </thead>
-
-<?php $reponse = $bdd->query("SELECT description_avantage_cm, id_avantage_cm FROM avantage_cm" );
-  while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
-   echo "<tbody>";
-   echo "<tr>";
-    echo "<td>".$reponse_tableau["description_avantage_cm"]."</td>";
-    echo "<td>"."<a href=\"member/edit.php?id=$reponse_tableau[id_avantage_cm]\"><i class='fas fa-edit'></i></a>"."</td>";;
-   echo "</tr>";
-    ?>
-
-    <?php
-      echo "</tbody>";
-      echo "<table";
-  }
-?>
