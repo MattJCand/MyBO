@@ -5,7 +5,7 @@ extract($_POST);
 
 
 if(isset($enregistrer) && $enregistrer=="Enregistrer"){
-  
+
   if(isset($image) && isset($nom) && isset($description) && isset($adresse)){
 
     if(empty($image)  || empty($nom) && isset($description) && isset($adresse))
@@ -27,11 +27,11 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
       else{
 
         //Enregistrement de l'image dans la bdd
-        $req_insert_img_partenaire="INSERT INTO `image`(`id_img`, `url_img`, `date_creation_img`) VALUES ('', :url_img , NOW())";
+        $req_insert_img_partenaire="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
         $insertion_req_insert_img_partenaire=$bdd->prepare($req_insert_img_partenaire);
         $insertion_req_insert_img_partenaire->bindParam(':url_img', $image, PDO::PARAM_STR);
         $insertion_req_insert_img_partenaire->execute();
-   
+
 
         //on recherche l'image qui vient d'être créer
         $recherche_req_unique_img->execute();
@@ -45,7 +45,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
           // echo $id_img_actu;
 
 
-          $req_insert_partenaire="INSERT INTO `partenaire`(`id_partenaire`, `nom_partenaire`, `description_partenaire`, `adresse_partenaire`, `url_partenaire`, `id_image`) VALUES ('', :nom , :description ,:adresse , :url ,:id_img_partenaire)";
+          $req_insert_partenaire="INSERT INTO `partenaire`(`nom_partenaire`, `description_partenaire`, `adresse_partenaire`, `url_partenaire`, `id_image`) VALUES (:nom , :description ,:adresse , :url ,:id_img_partenaire)";
           $insertion_req_insert_partenaire=$bdd->prepare($req_insert_partenaire);
           $insertion_req_insert_partenaire->bindParam(':nom', $nom, PDO::PARAM_STR);
           $insertion_req_insert_partenaire->bindParam(':description', $description, PDO::PARAM_STR);
@@ -101,10 +101,10 @@ include "../../inc/menu_2.php";
     <label for="description">Description du partenaire *</label>
     <textarea name="description" rows="10" cols="50" placeholder="Description du partenaire"></textarea>
 
-    
+
     <label for="url">Site du partenaire</label>
     <input name="url" type="text"  placeholder="Site du partenaire">
-    
+
     <div class="btn-form-bloc">
 
         <input class="btn-reset" type="reset" name="effacer" value="Effacer">

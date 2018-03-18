@@ -34,6 +34,11 @@ include "../inc/menu.php";
   ?>
       <tbody>
         <tr>
+          <?php
+        #$logo = $reponse_tableau["url_img"];
+        #$imageData = base64_encode(file_get_contents($logo));
+        #echo '<td><img class="img_actu" src="data:image/jpeg;base64,'.$imageData.'"></td>';
+        ?>
           <td class="img_table"><img src="<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
           <td class="titre_table"><?php echo $reponse_tableau["titre_actu"] ?></td>
           <td class="description-table description-table-actu"><?php echo $reponse_tableau["description_actu"] ?></td>
