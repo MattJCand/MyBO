@@ -40,7 +40,11 @@ include "../inc/menu.php";
         #$imageData = base64_encode(file_get_contents($logo));
         #echo '<td><img class="img_actu" src="data:image/jpeg;base64,'.$imageData.'"></td>';
         ?>
+<<<<<<< HEAD
+          <td class="img_table "><img class="img-adapte" src="../upload_img/actualite/<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
+=======
           <td class="img_table "><img class="img-adapte" src="../upload_img/<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
+>>>>>>> d4997d0ea2308f269eaa5acabbd994758923bfb1
           <td class="titre_table"><?php echo $reponse_tableau["titre_actu"] ?></td>
           <td class="description-table description-table-actu"><?php echo $reponse_tableau["description_actu"] ?></td>
           <td class="url_table"><a href="https://<?php echo $reponse_tableau["url_actu"] ?>" target="blank"><?php echo $reponse_tableau["url_actu"] ?></a></td>

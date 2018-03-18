@@ -59,7 +59,11 @@ elseif(isset($oui) && $oui=="Oui"){
     $suppression_req_delete_img_actu->bindParam(':id_image_a_supprimer', $id_image_a_supprimer, PDO::PARAM_INT);
     $suppression_req_delete_img_actu->execute();
 
+<<<<<<< HEAD
+    unlink('../../upload_img/actualite/'.$url_image_a_supprimer);
+=======
     unlink('../../upload_img/'.$url_image_a_supprimer);
+>>>>>>> d4997d0ea2308f269eaa5acabbd994758923bfb1
     header('location:../actu.php?delete=success');
 }
 

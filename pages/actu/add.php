@@ -30,15 +30,6 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 			}
 			else
 			{
-				//Enregistrement de l'image dans la bdd
-				$req_insert_img_actu="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
-				$insertion_img_actu=$bdd->prepare($req_insert_img_actu);
-				$insertion_img_actu->bindParam(':url_img', $image['name'], PDO::PARAM_STR);
-				$insertion_img_actu->execute();
-
-				// echo 'img_enregistrée<br>';
-
-				$recherche_req_unique_img->execute();
 
 				////UPLOAD File
 				if(isset($_FILES["image"]["type"]))
@@ -48,90 +39,96 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 					$temporary = explode(".", $_FILES["image"]["name"]);
 					$file_extension = end($temporary);
 
+					if ((($_FILES["image"]["type"] == "image/png") || ($_FILES["image"]["type"] == "image/jpg") || ($_FILES["image"]["type"] == "image/jpeg")
+					) && ($_FILES["image"]["size"] < 1048576) // taille max : 1Mo
+					&& in_array($file_extension, $validextensions)) 
+					{
 
-						if ((($_FILES["image"]["type"] == "image/png") || ($_FILES["image"]["type"] == "image/jpg") || ($_FILES["image"]["type"] == "image/jpeg")
-						) && ($_FILES["image"]["size"] < 1048576) // taille max : 1Mo
-						&& in_array($file_extension, $validextensions)) {
 
-
-							if ($_FILES["image"]["error"] > 0)
-							{
-							$msg= "Return Code: " . $_FILES["image"]["error"] . "<br/><br/>";
+						if ($_FILES["image"]["error"] > 0)
+						{
+							$msg = "Return Code: " . $_FILES["image"]["error"] . "<br/><br/>";
+						}
+						else
+						{
+							if (file_exists("../../upload_img/actualite/" . $_FILES["image"]["name"])) {
+								$msg= $_FILES["image"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
 							}
 							else
 							{
-								if (file_exists("../../upload_img/" . $_FILES["image"]["name"])) {
-									$msg=$_FILES["image"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
+								$sourcePath = $_FILES['image']['tmp_name']; 
+								$targetPath = "../../upload_img/actualite/".$_FILES['image']['name']; 
+
+								//enregistrement de l'image dans le dossier
+								move_uploaded_file($sourcePath,$targetPath) ; 
+								//Enregistrement de l'image dans la bdd
+								$req_insert_img_actu="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
+								$insertion_img_actu=$bdd->prepare($req_insert_img_actu);
+								$insertion_img_actu->bindParam(':url_img', $image['name'], PDO::PARAM_STR);
+								$insertion_img_actu->execute();
+
+								$recherche_req_unique_img->execute();
+
+								if($recherche_req_unique_img->rowCount()==1){
+
+									$recuperation_url_img = $recherche_req_unique_img->fetch(PDO::FETCH_ASSOC);
+
+									//stock l'id de l'image pour l'enregistrer dans l'actu qui va être créé
+									$id_img_actu=$recuperation_url_img['id_img'];//***********
+									// echo $id_img_actu;
+
+									$date_now=date("Y-m-d");
+
+									//Verification si la date existe deja dans la table date
+									$req_unique_date="SELECT * FROM date WHERE date_debut = :date_now ";
+									$recherche_req_unique_date=$bdd->prepare($req_unique_date);
+									$recherche_req_unique_date->bindParam(':date_now', $date_now, PDO::PARAM_STR);
+									$recherche_req_unique_date->execute();
+
+									if($recherche_req_unique_date->rowCount()>=1){
+										// echo "date existante";
+									}
+									else{
+										$req_insert_date="INSERT INTO `date`(`date_debut`, `date_fin`) VALUES ( NOW(), NULL)";
+										$insertion_date=$bdd->exec($req_insert_date);
+										// echo "nouvelle date";
+										//on relance une recherche
+										$recherche_req_unique_date->execute();
+
+									}
+									$recuperation_date = $recherche_req_unique_date->fetch(PDO::FETCH_ASSOC);
+
+									//variable qui stock l'id de la donnée date
+									$id_date_actu=$recuperation_date['id_date'];
+
+									// echo $id_img_actu.'<br>';
+									// echo $id_date_actu.'<br>';
+
+									$req_insert_actu="INSERT INTO `actualite`(`titre_actu`, `description_actu`, `url_actu`, `id_image`, `id_date`) VALUES ( :titre , :description , :url , :id_img_actu , :id_date_actu)";
+									$insertion_req_insert_actu=$bdd->prepare($req_insert_actu);
+									$insertion_req_insert_actu->bindParam(':titre', $titre, PDO::PARAM_STR);
+									$insertion_req_insert_actu->bindParam(':description', $description, PDO::PARAM_STR);
+									$insertion_req_insert_actu->bindParam(':url', $url, PDO::PARAM_STR);
+									$insertion_req_insert_actu->bindParam(':id_img_actu', $id_img_actu, PDO::PARAM_INT);
+									$insertion_req_insert_actu->bindParam(':id_date_actu', $id_date_actu, PDO::PARAM_INT);
+									$insertion_req_insert_actu->execute();
+									header('location:../actu.php?creation=success');
+
 								}
-								else
-								{
-									$sourcePath = $_FILES['image']['tmp_name']; // Storing source path of the file in a variable
-									$targetPath = "../../upload_img/".$_FILES['image']['name']; // Target path where file is to be stored
-									move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
-									
+								else{
+
+									$msg='Erreur sur la recherche d\'image';
 								}
 								
 							}
-						
-
+							
 						}
-						else{
-							$msg='erreur sur l\'upload d\'image';
-						}
+			
 
-				}	
-				////////***********
+					}	
+				
 
-				if($insertion_img_actu->rowCount()==1){
-
-					$recuperation_url_img = $recherche_req_unique_img->fetch(PDO::FETCH_ASSOC);
-
-					//stock l'id de l'image pour l'enregistrer dans l'actu qui va être créé
-					$id_img_actu=$recuperation_url_img['id_img'];//***********
-					// echo $id_img_actu;
-
-					$date_now=date("Y-m-d");
-
-					//Verification si la date existe deja dans la table date
-					$req_unique_date="SELECT * FROM date WHERE date_debut = :date_now ";
-					$recherche_req_unique_date=$bdd->prepare($req_unique_date);
-					$recherche_req_unique_date->bindParam(':date_now', $date_now, PDO::PARAM_STR);
-					$recherche_req_unique_date->execute();
-
-					if($recherche_req_unique_date->rowCount()>=1){
-						// echo "date existante";
-					}
-					else{
-						$req_insert_date="INSERT INTO `date`(`date_debut`, `date_fin`) VALUES ( NOW(), NULL)";
-						$insertion_date=$bdd->exec($req_insert_date);
-						// echo "nouvelle date";
-						//on relance une recherche
-						$recherche_req_unique_date->execute();
-
-					}
-					$recuperation_date = $recherche_req_unique_date->fetch(PDO::FETCH_ASSOC);
-
-					//variable qui stock l'id de la donnée date
-					$id_date_actu=$recuperation_date['id_date'];
-
-					// echo $id_img_actu.'<br>';
-					// echo $id_date_actu.'<br>';
-
-					$req_insert_actu="INSERT INTO `actualite`(`titre_actu`, `description_actu`, `url_actu`, `id_image`, `id_date`) VALUES ( :titre , :description , :url , :id_img_actu , :id_date_actu)";
-					$insertion_req_insert_actu=$bdd->prepare($req_insert_actu);
-					$insertion_req_insert_actu->bindParam(':titre', $titre, PDO::PARAM_STR);
-					$insertion_req_insert_actu->bindParam(':description', $description, PDO::PARAM_STR);
-					$insertion_req_insert_actu->bindParam(':url', $url, PDO::PARAM_STR);
-					$insertion_req_insert_actu->bindParam(':id_img_actu', $id_img_actu, PDO::PARAM_INT);
-					$insertion_req_insert_actu->bindParam(':id_date_actu', $id_date_actu, PDO::PARAM_INT);
-					$insertion_req_insert_actu->execute();
-					header('location:../actu.php?creation=success');
-
-				}
-				else{
-
-					$msg='Erreur sur la recher d\'image';
-				}
+				}////////***********
 
 			}
 
@@ -151,14 +148,17 @@ include "../../inc/menu_2.php";
 	 <a href="../actu.php"><i class="fas fa-arrow-circle-left"></i>
 	 </a>
 
-	<div >
-		<p class="resultat"><?php echo $msg; ?></p>
+	<div>
+		<p class="resultat text-center"><?php echo $msg; ?></p>
+
 	</div>
 
 
 	<form class="form-actu" method="post" action="#" enctype="multipart/form-data">
-		<label for="image">Sélectionner une image pour l'actualité *</label>
-		<input type="file" name="image" id="image">
+
+		<label for="image">Sélectionner une image pour l'actualité * (MAX : 1Mo)</label>
+		<input type="file" name="image" >
+
 
 		<label for="titre">Titre de l'actualité *</label>
 		<input name="titre" type="text"  placeholder="Titre de l'actualité">
