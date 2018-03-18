@@ -4,7 +4,7 @@ require_once '../../inc/inc.php';
 extract($_GET);
 
 if(isset($id) && !empty($id)){
-    $req_verif_prof="SELECT * FROM professeur p, image i WHERE p.id_image= i.id_img";
+    $req_verif_prof="SELECT * FROM professeur p, image i WHERE p.id_image= i.id_img AND id_prof= :id";
     $recherche_req_verif_prof=$bdd->prepare($req_verif_prof);
     $recherche_req_verif_prof->bindParam(':id', $id, PDO::PARAM_INT);
     $recherche_req_verif_prof->execute();

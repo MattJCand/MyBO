@@ -25,7 +25,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
       }
       else{
         //Enregistrement de l'image dans la bdd
-        $req_insert_img_prof="INSERT INTO `image`(`id_img`, `url_img`, `date_creation_img`) VALUES ('', :url_img_insert , NOW())";
+        $req_insert_img_prof="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img_insert , NOW())";
         $insertion_img_prof=$bdd->prepare($req_insert_img_prof);
         $insertion_img_prof->bindParam(':url_img_insert', $image, PDO::PARAM_STR);
         $insertion_img_prof->execute();
@@ -42,7 +42,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
           $id_img_prof=$recuperation_url_img['id_img'];//***********
           // echo $id_img_prof;
 
-          $req_insert_professeur="INSERT INTO `professeur`(`id_prof`, `nom_prof`, `prenom_prof`, `description_prof`, `email_prof`,  `profession_prof`, `tarif_prof`, `id_image`) VALUES ('', :nom , :prenom, :description , :email , :profession, :tarif, :id_img_prof )";
+          $req_insert_professeur="INSERT INTO `professeur`(`nom_prof`, `prenom_prof`, `description_prof`, `email_prof`,  `profession_prof`, `tarif_prof`, `id_image`) VALUES (:nom , :prenom, :description , :email , :profession, :tarif, :id_img_prof )";
           $insertion_req_insert_professeur=$bdd->prepare($req_insert_professeur);
           $insertion_req_insert_professeur->bindParam(':nom', $nom, PDO::PARAM_STR);
           $insertion_req_insert_professeur->bindParam(':prenom', $prenom, PDO::PARAM_STR);

@@ -25,7 +25,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
       }
       else{
         //Enregistrement de l'image dans la bdd
-        $req_insert_img_event="INSERT INTO `image`(`id_img`, `url_img`, `date_creation_img`) VALUES ('', :url_img , NOW())";
+        $req_insert_img_event="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
         $insertion_img_event=$bdd->prepare($req_insert_img_event);
         $insertion_img_event->bindParam(':url_img', $image, PDO::PARAM_STR);
         $insertion_img_event->execute();
@@ -54,7 +54,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
             // echo "date existante";
           }
           else{
-            $req_insert_date="INSERT INTO `date`(`id_date`, `date_debut`, `date_fin`) VALUES ('', NOW(),'')";
+            $req_insert_date="INSERT INTO `date`(`date_debut`, `date_fin`) VALUES (NOW(), NULL)";
             $insertion_date=$bdd->exec($req_insert_date);
             // echo "nouvelle date";
             //on relance une recherche
@@ -69,18 +69,15 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
           // echo $id_img_event.'<br>';
           // echo $id_date_event.'<br>';
 
-          $req_insert_event="INSERT INTO `event`(`id_event`, `nom_event`, `description_event`, `lieu_event`, `url_event`, `id_image`, `id_date`, 'id_horaire') VALUES ('', :nom , :description ,:lieu, :url , :id_img_event , :id_date_event, :id_horaire)";
+          $req_insert_event="INSERT INTO `evenement`( `nom_event`, `description_event`, `lieu_event`, `url_event`, `id_image`, `id_date`) VALUES ( :nom , :description ,:lieu, :url , :id_img_event , :id_date_event)";
           $insertion_req_insert_event=$bdd->prepare($req_insert_event);
-          $insertion_req_insert_event->bindParam(':,nom', $titre, PDO::PARAM_STR);
+          $insertion_req_insert_event->bindParam(':nom', $nom, PDO::PARAM_STR);
           $insertion_req_insert_event->bindParam(':description', $description, PDO::PARAM_STR);
           $insertion_req_insert_event->bindParam(':lieu', $description, PDO::PARAM_STR);
           $insertion_req_insert_event->bindParam(':url', $url, PDO::PARAM_STR);
           $insertion_req_insert_event->bindParam(':id_img_event', $id_img_event, PDO::PARAM_INT);
           $insertion_req_insert_event->bindParam(':id_date_event', $id_date_event, PDO::PARAM_INT);
-          $insertion_req_insert_event->bindParam(':id_horaire_event', $id_horaire_event, PDO::PARAM_INT);
           $insertion_req_insert_event->execute();
-          header('location:../event.php');
-
         }
         else{
           $msg='Erreur sur la recher d\'image';
@@ -114,13 +111,13 @@ include "../../inc/menu_2.php";
     <label for="image">Sélectionner une image pour l'evenement *</label>
     <input type="file" name="image">
 
-    <label for="nom">Titre de l'evenement *</label>
+    <label for="nom">Nom de l'evenement *</label>
     <input name="nom" type="text"  placeholder="Nom de l'evenement">
 
     <label for="description">Description de l'evenement *</label>
     <textarea name="description" rows="10" cols="50" placeholder="Description de l'évènement"></textarea>
 
-    <label for="lieu">Lieu de l'evenement @*</label>
+    <label for="lieu">Lieu de l'evenement *</label>
     <textarea name="lieu" rows="10" cols="50" placeholder="Lieu de l'évènement"></textarea>
 
 

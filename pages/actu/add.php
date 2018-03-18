@@ -25,7 +25,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 			}
 			else{
 				//Enregistrement de l'image dans la bdd
-				$req_insert_img_actu="INSERT INTO `image`(`id_img`, `url_img`, `date_creation_img`) VALUES ('', :url_img , NOW())";
+				$req_insert_img_actu="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
 				$insertion_img_actu=$bdd->prepare($req_insert_img_actu);
 				$insertion_img_actu->bindParam(':url_img', $image, PDO::PARAM_STR);
 				$insertion_img_actu->execute();
@@ -54,7 +54,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 						// echo "date existante";
 					}
 					else{
-						$req_insert_date="INSERT INTO `date`(`id_date`, `date_debut`, `date_fin`) VALUES ('', NOW(),'')";
+						$req_insert_date="INSERT INTO `date`(`date_debut`, `date_fin`) VALUES ( NOW(), NULL)";
 						$insertion_date=$bdd->exec($req_insert_date);
 						// echo "nouvelle date";
 						//on relance une recherche
@@ -67,9 +67,9 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 					$id_date_actu=$recuperation_date['id_date'];
 
 					// echo $id_img_actu.'<br>';
-					// echo $id_date_actu.'<br>';
+					echo $id_date_actu.'<br>';
 
-					$req_insert_actu="INSERT INTO `actualite`(`id_actu`, `titre_actu`, `description_actu`, `url_actu`, `id_image`, `id_date`) VALUES ('', :titre , :description , :url , :id_img_actu , :id_date_actu)";
+					$req_insert_actu="INSERT INTO `actualite`(`titre_actu`, `description_actu`, `url_actu`, `id_image`, `id_date`) VALUES ( :titre , :description , :url , :id_img_actu , :id_date_actu)";
 					$insertion_req_insert_actu=$bdd->prepare($req_insert_actu);
 					$insertion_req_insert_actu->bindParam(':titre', $titre, PDO::PARAM_STR);
 					$insertion_req_insert_actu->bindParam(':description', $description, PDO::PARAM_STR);
