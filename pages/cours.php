@@ -1,36 +1,67 @@
 <?php
 require_once '../inc/inc.php';
-require_once "../inc/menu.php";
- ?>
 
-<div class="block_title">
-  <h1 class="align"> Index page Cours</h1>
-  <a href="home.php"><i class="fas fa-home"></i></a>
-</div>
+  $req="SELECT * FROM cours c, cours_horaire_prevu chp, cours_jours_prevu cjp WHERE chp.id_cours=c.id_cours AND cjp.id_cours=c.id_cours";
+  $reponse_req = $bdd->query($req);
 
-<table>
-  <thead>
-   <tr>
-    <th>Intitule</th>
-    <th>Description</th>
-    <th>Objectif Un</th>
-    <th>Objectif Deux</th>
-    <th>Objectif Trois</th>
-    <th>Editer</th>
-   </tr>
- </thead>
+include "../inc/menu.php";
 
-<?php $reponse = $bdd->query("SELECT * FROM Cours" );
-  while ( $reponse_tableau = $reponse->fetch(PDO::FETCH_ASSOC)) {
-    echo "<tbody>";
-    echo "<tr>";
-      echo "<td>".$reponse_tableau["intitule_cours"]."</td>";
-      echo "<td>".$reponse_tableau["description_cours"]."</td>";
-      echo "<td><a href=\"cours/edit.php?id=$reponse_tableau[id_cours]\"><i class='fas fa-edit'></i></a></td>";
-    echo "</tr>";
-    ?>
-    <?php
-      echo "</tbody>";
-      echo "</table";
-  }
 ?>
+<main>
+  <h1 class="text-center">Gestion des Cours</h1
+
+  <?php
+    if($reponse_req->rowCount()>=1){
+  ?>
+     <table class="table-cours">
+      <thead>
+         <tr>
+          <th>Intitule</th>
+          <th>Description</th>
+          <th>Heure de debut</th>
+          <th>Heure de fin</th>
+          <th>Jour prevu</th>
+          <th>Gestion</th>
+        </tr>
+      </thead>
+  <?php
+
+    while ( $reponse_tableau = $reponse_req->fetch(PDO::FETCH_ASSOC)) {
+  ?>
+      <tbody>
+        <tr>
+          <td class="titre_table"><?php echo $reponse_tableau["intitule_cours"] ?></td>
+          <td class="description-table description-table-cours"><?php echo $reponse_tableau["description_cours"] ?></td>
+
+          <td>
+            <a href="cours/edit.php?id=<?php echo $reponse_tableau["id_cours"]; ?>">
+              <i class='fas fa-edit'></i>
+            </a>
+          </td>
+        </tr>
+
+  <?php
+    }
+  ?>
+      </tbody>
+  <table>
+
+</main>
+<?php
+}
+
+include "../inc/footer.php";
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+

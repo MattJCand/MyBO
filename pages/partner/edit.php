@@ -25,6 +25,8 @@ else{
 
 
 extract($_POST);
+extract($_FILES);
+
 
 if(isset($modifier) && $modifier=="Modifier"){
                 
@@ -44,7 +46,7 @@ if(isset($modifier) && $modifier=="Modifier"){
                 $logo_partenaire_udp= $resultat_req_verif_partenaire['url_img'];
                 echo $logo_partenaire_udp;
 
-                echo 'hello<br>';
+                // echo 'hello<br>';
                 //requete de mise a jour
                 $req_udp_partenaire="
                 UPDATE partenaire p, image i 
@@ -79,7 +81,7 @@ if(isset($modifier) && $modifier=="Modifier"){
                 //Verification si l'url de l'image existe deja dans la table image
                 $req_unique_img="SELECT * FROM image WHERE url_img = :logo_partenaire";
                 $recherche_req_unique_img=$bdd->prepare($req_unique_img);
-                $recherche_req_unique_img->bindParam(':logo_partenaire', $logo_partenaire, PDO::PARAM_STR);
+                $recherche_req_unique_img->bindParam(':logo_partenaire', $logo_partenaire['name'], PDO::PARAM_STR);
                 $recherche_req_unique_img->execute();
 
                 //Si l'url existe deja alors afficher un message d'erreur
@@ -135,7 +137,7 @@ require_once "../../inc/menu_2.php";
         <p class="resultat"><?php echo $msg; ?></p>
     </div>
 
-    <form class="form-partner" method="post" action="#">
+    <form class="form-partner" method="post" action="#" enctype="multipart/form-data">
 
         <label for="logo_partenaire">logo du partenaire :</label>
 

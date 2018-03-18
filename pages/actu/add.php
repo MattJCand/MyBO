@@ -30,7 +30,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 			}
 			else
 			{
-				
+
 				////UPLOAD File
 				if(isset($_FILES["image"]["type"]))
 				{
@@ -39,10 +39,10 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 					$temporary = explode(".", $_FILES["image"]["name"]);
 					$file_extension = end($temporary);
 
-
 					if ((($_FILES["image"]["type"] == "image/png") || ($_FILES["image"]["type"] == "image/jpg") || ($_FILES["image"]["type"] == "image/jpeg")
 					) && ($_FILES["image"]["size"] < 1048576) // taille max : 1Mo
-					&& in_array($file_extension, $validextensions)) {
+					&& in_array($file_extension, $validextensions)) 
+					{
 
 
 						if ($_FILES["image"]["error"] > 0)
@@ -123,15 +123,12 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 							}
 							
 						}
-					
+			
 
-					}
-					else{
-						$msg='Erreur sur l\'enregistrement de l\'image';
-					}
+					}	
+				
 
-				}	
-				////////***********
+				}////////***********
 
 			}
 
@@ -153,12 +150,15 @@ include "../../inc/menu_2.php";
 
 	<div>
 		<p class="resultat text-center"><?php echo $msg; ?></p>
+
 	</div>
 
 
 	<form class="form-actu" method="post" action="#" enctype="multipart/form-data">
+
 		<label for="image">Sélectionner une image pour l'actualité * (MAX : 1Mo)</label>
 		<input type="file" name="image" >
+
 
 		<label for="titre">Titre de l'actualité *</label>
 		<input name="titre" type="text"  placeholder="Titre de l'actualité">
