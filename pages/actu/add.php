@@ -30,11 +30,9 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 			}
 			else
 			{
-
 				////UPLOAD File
 				if(isset($_FILES["image"]["type"]))
 				{
-
 					$validextensions = array("jpeg", "jpg", "png");
 					$temporary = explode(".", $_FILES["image"]["name"]);
 					$file_extension = end($temporary);
@@ -62,6 +60,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 								//enregistrement de l'image dans le dossier
 								move_uploaded_file($sourcePath,$targetPath) ; 
 								//Enregistrement de l'image dans la bdd
+								
 								$req_insert_img_actu="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
 								$insertion_img_actu=$bdd->prepare($req_insert_img_actu);
 								$insertion_img_actu->bindParam(':url_img', $image['name'], PDO::PARAM_STR);
