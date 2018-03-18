@@ -54,22 +54,45 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
             // echo "date existante";
           }
           else{
-            $req_insert_date="INSERT INTO `date`(`date_debut`, `date_fin`) VALUES (NOW(), NULL)";
+            $req_insert_date="INSERT INTO `date`(`date_debut`, `date_fin`) VALUES ( :date_debut, :date_fin)";
             $insertion_date=$bdd->exec($req_insert_date);
             // echo "nouvelle date";
             //on relance une recherche
             $recherche_req_unique_date->execute();
 
           }
+
+          //Verification si l'heure existe deja dans la table date
+          $req_unique_time="SELECT * FROM horaire WHERE heure_debut = :heure_debut AND heure_fin = :heure_fin";
+          $recherche_req_unique_time=$bdd->prepare($req_unique_time);
+          $recherche_req_unique_time->bindParam(':heure_debut', $heure_debut, PDO::PARAM_STR);
+          $recherche_req_unique_time->bindParam(':heure_fin', $heure_fin, PDO::PARAM_STR);
+          $recherche_req_unique_time->execute();
+
+          if($recherche_req_unique_time->rowCount()>=1){
+            // echo "date existante";
+          }
+          else{
+            $req_insert_time="INSERT INTO `horaire`(`heure_debut`, `heure_fin`) VALUES ( :heure_debut, :heure_fin)";
+            $insertion_time=$bdd->exec($req_insert_time);
+            // echo "nouvelle date";
+            //on relance une recherche
+            $recherche_req_unique_time->execute();
+
+          }
+
+
           $recuperation_date = $recherche_req_unique_date->fetch(PDO::FETCH_ASSOC);
+          $recuperation_time = $recherche_req_unique_time->fetch(PDO::FETCH_ASSOC);
 
           //variable qui stock l'id de la donnée date
           $id_date_event=$recuperation_date['id_date'];
+          $id_time_event=$recuperation_time['id_horaire'];
 
           // echo $id_img_event.'<br>';
           // echo $id_date_event.'<br>';
 
-          $req_insert_event="INSERT INTO `evenement`( `nom_event`, `description_event`, `lieu_event`, `url_event`, `id_image`, `id_date`) VALUES ( :nom , :description ,:lieu, :url , :id_img_event , :id_date_event)";
+          $req_insert_event="INSERT INTO `evenement`( `nom_event`, `description_event`, `lieu_event`, `url_event`, `id_image`, `id_date`, `id_horaire`) VALUES ( :nom , :description ,:lieu, :url , :id_img_event , :id_date_event, :id_horaire_event)";
           $insertion_req_insert_event=$bdd->prepare($req_insert_event);
           $insertion_req_insert_event->bindParam(':nom', $nom, PDO::PARAM_STR);
           $insertion_req_insert_event->bindParam(':description', $description, PDO::PARAM_STR);
@@ -77,6 +100,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
           $insertion_req_insert_event->bindParam(':url', $url, PDO::PARAM_STR);
           $insertion_req_insert_event->bindParam(':id_img_event', $id_img_event, PDO::PARAM_INT);
           $insertion_req_insert_event->bindParam(':id_date_event', $id_date_event, PDO::PARAM_INT);
+          $insertion_req_insert_event->bindParam(':id_horaire_event', $id_horaire_event, PDO::PARAM_INT);
           $insertion_req_insert_event->execute();
         }
         else{
@@ -121,8 +145,22 @@ include "../../inc/menu_2.php";
     <textarea name="lieu" rows="10" cols="50" placeholder="Lieu de l'évènement"></textarea>
 
 
+    <label for="date_debut">Date début de l'événement</label>
+    <input name="date_debut" type="date">
+
+
+    <label for="date_fin">Date de fin de l'événement</label>
+    <input name="date_fin" type="date">
+
     <label for="url">Site de l'evenements</label>
     <input name="url" type="text"  placeholder="Site de l'evenement">
+
+
+    <label for="heure_debut">Heure de début</label>
+    <input name="heure_debut" type="time">
+
+    <label for="heure_fin">Heure de fin</label>
+    <input name="heure_fin" type="time">
 
     <div class="btn-form-bloc">
 
