@@ -1,5 +1,6 @@
 <?php
 require_once '../inc/inc.php';
+// clearstatcache();
 
   $req="SELECT *, date_format(date_debut, '%d/%m/%Y') AS date_fr FROM actualite a, image i, date d WHERE a.id_image= i.id_img AND a.id_date=d.id_date";
   $reponse_req = $bdd->query($req);
@@ -39,7 +40,7 @@ include "../inc/menu.php";
         #$imageData = base64_encode(file_get_contents($logo));
         #echo '<td><img class="img_actu" src="data:image/jpeg;base64,'.$imageData.'"></td>';
         ?>
-          <td class="img_table"><img src="<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
+          <td class="img_table "><img class="img-adapte" src="../upload_img/<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
           <td class="titre_table"><?php echo $reponse_tableau["titre_actu"] ?></td>
           <td class="description-table description-table-actu"><?php echo $reponse_tableau["description_actu"] ?></td>
           <td class="url_table"><a href="https://<?php echo $reponse_tableau["url_actu"] ?>" target="blank"><?php echo $reponse_tableau["url_actu"] ?></a></td>

@@ -1,12 +1,17 @@
 <?php
 require_once '../../inc/inc.php';
 
+// echo '<pre>';
+// 	print_r($_FILES);
+// echo '</pre>';
 
 extract($_POST);
+extract($_FILES);
 
 if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 
 	if(isset($image) && isset($titre) && isset($description)){
+
 		if(empty($image)  || empty($titre) || empty($description))
 		{
 			$msg="Veuillez remplir tous les champs obligatoire s'il vous plaît";
@@ -16,23 +21,66 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 			//Verification si l'url de l'image existe deja dans la table image
 			$req_unique_img="SELECT * FROM image WHERE url_img = :url_img";
 			$recherche_req_unique_img=$bdd->prepare($req_unique_img);
-			$recherche_req_unique_img->bindParam(':url_img', $image, PDO::PARAM_STR);
+			$recherche_req_unique_img->bindParam(':url_img', $image['name'], PDO::PARAM_STR);
 			$recherche_req_unique_img->execute();
 
 			//Si l'url existe deja alors afficher un message d'erreur
 			if($recherche_req_unique_img->rowCount()>=1){
 				$msg='cette url d\'image existe deja. Renommer votre image S\'il vous plaît.';
 			}
-			else{
+			else
+			{
 				//Enregistrement de l'image dans la bdd
 				$req_insert_img_actu="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
 				$insertion_img_actu=$bdd->prepare($req_insert_img_actu);
-				$insertion_img_actu->bindParam(':url_img', $image, PDO::PARAM_STR);
+				$insertion_img_actu->bindParam(':url_img', $image['name'], PDO::PARAM_STR);
 				$insertion_img_actu->execute();
 
 				// echo 'img_enregistrée<br>';
 
 				$recherche_req_unique_img->execute();
+
+				////UPLOAD File
+				if(isset($_FILES["image"]["type"]))
+				{
+
+					$validextensions = array("jpeg", "jpg", "png");
+					$temporary = explode(".", $_FILES["image"]["name"]);
+					$file_extension = end($temporary);
+
+
+						if ((($_FILES["image"]["type"] == "image/png") || ($_FILES["image"]["type"] == "image/jpg") || ($_FILES["image"]["type"] == "image/jpeg")
+						) && ($_FILES["image"]["size"] < 1048576) // taille max : 1Mo
+						&& in_array($file_extension, $validextensions)) {
+
+
+							if ($_FILES["image"]["error"] > 0)
+							{
+							$msg= "Return Code: " . $_FILES["image"]["error"] . "<br/><br/>";
+							}
+							else
+							{
+								if (file_exists("../../upload_img/" . $_FILES["image"]["name"])) {
+									$msg=$_FILES["image"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
+								}
+								else
+								{
+									$sourcePath = $_FILES['image']['tmp_name']; // Storing source path of the file in a variable
+									$targetPath = "../../upload_img/".$_FILES['image']['name']; // Target path where file is to be stored
+									move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
+									
+								}
+								
+							}
+						
+
+						}
+						else{
+							$msg='erreur sur l\'upload d\'image';
+						}
+
+				}	
+				////////***********
 
 				if($insertion_img_actu->rowCount()==1){
 
@@ -67,7 +115,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 					$id_date_actu=$recuperation_date['id_date'];
 
 					// echo $id_img_actu.'<br>';
-					echo $id_date_actu.'<br>';
+					// echo $id_date_actu.'<br>';
 
 					$req_insert_actu="INSERT INTO `actualite`(`titre_actu`, `description_actu`, `url_actu`, `id_image`, `id_date`) VALUES ( :titre , :description , :url , :id_img_actu , :id_date_actu)";
 					$insertion_req_insert_actu=$bdd->prepare($req_insert_actu);
@@ -77,10 +125,11 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 					$insertion_req_insert_actu->bindParam(':id_img_actu', $id_img_actu, PDO::PARAM_INT);
 					$insertion_req_insert_actu->bindParam(':id_date_actu', $id_date_actu, PDO::PARAM_INT);
 					$insertion_req_insert_actu->execute();
-					header('location:../actu.php');
+					header('location:../actu.php?creation=success');
 
 				}
 				else{
+
 					$msg='Erreur sur la recher d\'image';
 				}
 
@@ -107,9 +156,9 @@ include "../../inc/menu_2.php";
 	</div>
 
 
-	<form class="form-actu" method="post" action="#">
+	<form class="form-actu" method="post" action="#" enctype="multipart/form-data">
 		<label for="image">Sélectionner une image pour l'actualité *</label>
-		<input type="file" name="image">
+		<input type="file" name="image" id="image">
 
 		<label for="titre">Titre de l'actualité *</label>
 		<input name="titre" type="text"  placeholder="Titre de l'actualité">
