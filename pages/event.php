@@ -1,7 +1,7 @@
 <?php
 require_once '../inc/inc.php';
 
-  $req="SELECT *, date_format(date_debut, '%d/%m/%Y') AS date_fr FROM evenement e, image i, date d, horaire h WHERE e.id_image= i.id_img AND e.id_date=d.id_date AND e.id_horaire=h.id_horaire";
+  $req="SELECT *, date_format(date_debut, '%d/%m/%Y') AS date_d, date_format(date_fin, '%d/%m/%Y') AS date_f FROM evenement e, image i, date d, horaire h WHERE e.id_image= i.id_img AND e.id_date=d.id_date AND e.id_horaire=h.id_horaire";
   $reponse_req = $bdd->query($req);
 
 include "../inc/menu.php";
@@ -23,10 +23,9 @@ include "../inc/menu.php";
           <th>Nom</th>
           <th>Description</th>
           <th>Lieu</th>
+          <th colspan="2">Période</th>
+          <th colspan="2">Horaire</th>
           <th>Site</th>
-          <th>Date</th>
-          <th>Heure debut</th>
-          <th>Heure de fin</th>
           <th colspan=2>Gestion</th>
 
         </tr>
@@ -37,21 +36,29 @@ include "../inc/menu.php";
   ?>
       <tbody>
         <tr>
-          <td class="img_table"><img src="<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
-          <td class="titre_table"><?php echo $reponse_tableau["nom_event"] ?></td>
-          <td class="description-table description-table-event"><?php echo $reponse_tableau["description_event"] ?></td>
-          <td class="lieu_table"><?php echo $reponse_tableau["lieu_event"] ?></td>
-          <td class="url_table"><a href="http://<?php echo $reponse_tableau["url_event"] ?>"><?php echo $reponse_tableau["url_event"] ?></a></td>
-          <td class="date_table"><?php echo $reponse_tableau["date_fr"] ?></td>
-          <td class="date_table"><?php echo $reponse_tableau["heure_debut"] ?></td>
-          <td class="date_table"><?php echo $reponse_tableau["heure_fin"] ?></td>
+          <td class="img_table">
+            <img class="img-adapte" src="../upload_img/evenement/<?php echo htmlentities($reponse_tableau["url_img"]) ?>" alt="<?php echo htmlentities($reponse_tableau["url_img"]) ?>">
+          </td>
+          <td class="titre_table"><?php echo htmlentities($reponse_tableau["nom_event"]) ?></td>
+          <td class="description-table description-table-event"><?php echo htmlentities($reponse_tableau["description_event"]) ?></td>
+          <td class="lieu_table"><?php echo htmlentities($reponse_tableau["lieu_event"]) ?></td>
+
+          <td class="date_table"><?php echo htmlentities($reponse_tableau["date_d"]) ?></td>
+          <td class="date_table"><?php echo htmlentities($reponse_tableau["date_f"]) ?></td>
+          <td class="date_table"><?php echo htmlentities($reponse_tableau["heure_debut"]) ?></td>
+          <td class="date_table"><?php echo htmlentities($reponse_tableau["heure_fin"]) ?>
+            
+          </td>
+          <td class="url_table">
+            <a href="http://<?php echo htmlentities($reponse_tableau["url_event"]) ?>"><?php echo htmlentities($reponse_tableau["url_event"]) ?></a>
+          </td>
           <td>
-            <a href="event/edit.php?id=<?php echo $reponse_tableau["id_event"]; ?>">
+            <a href="event/edit.php?id=<?php echo htmlentities($reponse_tableau["id_event"]); ?>">
               <i class='fas fa-edit'></i>
             </a>
           </td>
           <td>
-            <a href="event/delete.php?id=<?php echo $reponse_tableau["id_event"]; ?>">
+            <a href="event/delete.php?id=<?php echo htmlentities($reponse_tableau["id_event"]); ?>">
               <i class='fas fa-trash'></i>
             </a>
           </td>
