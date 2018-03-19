@@ -102,7 +102,7 @@ if(isset($modifier) && $modifier=="Modifier"){
                             else
                             {
 
-                                if (file_exists("../../upload_img/actualite/" . $_FILES["img_actu"]["name"])) {
+                                if (file_exists("../../../upload_img/actualite/" . $_FILES["img_actu"]["name"])) {
 
                                     $msg=$_FILES["img_actu"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
                                 }
@@ -110,7 +110,7 @@ if(isset($modifier) && $modifier=="Modifier"){
                                 {
                                     $sourcePath = $_FILES['img_actu']['tmp_name']; // Storing source path of the file in a variable
 
-                                    $targetPath = "../../upload_img/actualite/".$_FILES['img_actu']['name']; // Target path where file is to be stored
+                                    $targetPath = "../../../upload_img/actualite/".$_FILES['img_actu']['name']; // Target path where file is to be stored
                                     move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
                                     
                                     //requete de mise a jour
@@ -173,7 +173,7 @@ require_once "../../inc/menu_2.php";
         <label for="img_actu">Image de l'actu :</label>
         <div class="edit-img-bloc">  
 
-        <img src="../../upload_img/actualite/<?php echo htmlentities($resultat_req_verif_actu['url_img']); ?>" alt="<?php echo htmlentities($resultat_req_verif_actu['url_img']); ?>">
+        <img src="../../../upload_img/actualite/<?php echo htmlentities($resultat_req_verif_actu['url_img']); ?>" alt="<?php echo htmlentities($resultat_req_verif_actu['url_img']); ?>">
 
         </div> 
         

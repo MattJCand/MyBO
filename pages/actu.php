@@ -35,7 +35,7 @@ include "../inc/menu.php";
   ?>
       <tbody>
         <tr>
-          <td class="img_table "><img class="img-adapte" src="../upload_img/actualite/<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
+          <td class="img_table "><img class="img-adapte" src="../../upload_img/actualite/<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
 
           <td class="titre_table"><?php echo htmlentities($reponse_tableau["titre_actu"]) ?></td>
           <td class="description-table description-table-actu"><?php echo htmlentities($reponse_tableau["description_actu"]) ?></td>

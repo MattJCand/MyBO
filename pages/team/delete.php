@@ -42,7 +42,7 @@ elseif(isset($oui) && $oui=="Oui"){
       $resultat_image_presse=$recherche_req_id_img->fetch(PDO::FETCH_ASSOC);
 
       $id_image_a_supprimer=$resultat_image_presse['id_image'];
-
+      $url_image_a_supprimer=$resultat_image_presse['url_img'];
     }
     //supression de l'article de presse
   $req_delete_professeur="DELETE FROM professeur WHERE id_prof= :id";
@@ -58,6 +58,7 @@ elseif(isset($oui) && $oui=="Oui"){
     $suppression_req_delete_img_professeur->bindParam(':id_image_a_supprimer', $id_image_a_supprimer, PDO::PARAM_INT);
     $suppression_req_delete_img_professeur->execute();
 
+    unlink('../../upload_img/professeur/'.$url_image_a_supprimer);
     header('location:../team.php?delete=success');
 }
 
