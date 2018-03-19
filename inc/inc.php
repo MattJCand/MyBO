@@ -8,6 +8,7 @@ $options = array(
 		);
 
 try{
+	// $bdd= new PDO( 'mysql:host=localhost;dbname=planetemanga','root','root', $options);
 	$bdd= new PDO( 'mysql:host=localhost;dbname=planetemanga','root','root', $options);
 }
 catch(Exception $e){

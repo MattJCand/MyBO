@@ -47,13 +47,13 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
             }
             else
             {
-              if (file_exists("../../upload_img/presse/" . $_FILES["image"]["name"])) {
+              if (file_exists("../../../upload_img/presse/" . $_FILES["image"]["name"])) {
                 $msg= $_FILES["image"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
               }
               else
               {
                 $sourcePath = $_FILES['image']['tmp_name'];
-                $targetPath = "../../upload_img/presse/".$_FILES['image']['name'];
+                $targetPath = "../../../upload_img/presse/".$_FILES['image']['name'];
 
                 //enregistrement de l'image dans le dossier
                 move_uploaded_file($sourcePath,$targetPath) ;

@@ -32,7 +32,7 @@ include "../inc/menu.php";
       <tbody>
         <tr>
           <td class="nom_img_galerie_table"><?php echo $reponse_tableau["nom_img"] ?></td>
-          <td class="img_table "><img class="img-adapte" src="../../upload_img/galerie/<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
+          <td class="img_table "><img class="img-adapte" src="../../../upload_img/galerie/<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>"></td>
           <td class="display_img_galerie_table"><?php echo $reponse_tableau["display_img"] ?></td>
            <td>
             <a href="galerie/edit.php?id=<?php echo $reponse_tableau["id_galerie"]; ?>">
