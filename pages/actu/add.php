@@ -49,18 +49,18 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 						}
 						else
 						{
-							if (file_exists("../../upload_img/actualite/" . $_FILES["image"]["name"])) {
+							if (file_exists("../../../upload_img/actualite/" . $_FILES["image"]["name"])) {
 								$msg= $_FILES["image"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
 							}
 							else
 							{
 								$sourcePath = $_FILES['image']['tmp_name']; 
-								$targetPath = "../../upload_img/actualite/".$_FILES['image']['name']; 
+								$targetPath = "../../../upload_img/actualite/".$_FILES['image']['name']; 
 
 								//enregistrement de l'image dans le dossier
 								move_uploaded_file($sourcePath,$targetPath) ; 
 								//Enregistrement de l'image dans la bdd
-								
+
 								$req_insert_img_actu="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
 								$insertion_img_actu=$bdd->prepare($req_insert_img_actu);
 								$insertion_img_actu->bindParam(':url_img', $image['name'], PDO::PARAM_STR);

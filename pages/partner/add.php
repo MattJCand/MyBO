@@ -2,7 +2,7 @@
 require_once '../../inc/inc.php';
 
 extract($_POST);
-
+extract($_FILES);
 
 if(isset($enregistrer) && $enregistrer=="Enregistrer"){
 
@@ -17,7 +17,7 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
       //Verification si l'url de l'image existe deja dans la table image
       $req_unique_img="SELECT * FROM image WHERE url_img = :url_img";
       $recherche_req_unique_img=$bdd->prepare($req_unique_img);
-      $recherche_req_unique_img->bindParam(':url_img', $image, PDO::PARAM_STR);
+      $recherche_req_unique_img->bindParam(':url_img', $image['name'], PDO::PARAM_STR);
       $recherche_req_unique_img->execute();
 
       //Si l'url existe deja alors afficher un message d'erreur
@@ -26,40 +26,87 @@ if(isset($enregistrer) && $enregistrer=="Enregistrer"){
       }
       else{
 
-        //Enregistrement de l'image dans la bdd
-        $req_insert_img_partenaire="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
-        $insertion_req_insert_img_partenaire=$bdd->prepare($req_insert_img_partenaire);
-        $insertion_req_insert_img_partenaire->bindParam(':url_img', $image, PDO::PARAM_STR);
-        $insertion_req_insert_img_partenaire->execute();
+        ////UPLOAD File
+        if(isset($_FILES["image"]["type"]))
+        {
+          $validextensions = array("jpeg", "jpg", "png");
+          $temporary = explode(".", $_FILES["image"]["name"]);
+          $file_extension = end($temporary);
+
+          if ((($_FILES["image"]["type"] == "image/png") || ($_FILES["image"]["type"] == "image/jpg") || ($_FILES["image"]["type"] == "image/jpeg")
+          ) && ($_FILES["image"]["size"] < 1048576) // taille max : 1Mo
+          && in_array($file_extension, $validextensions)) 
+          {
 
 
-        //on recherche l'image qui vient d'être créer
-        $recherche_req_unique_img->execute();
+            if ($_FILES["image"]["error"] > 0)
+            {
+              $msg = "Return Code: " . $_FILES["image"]["error"] . "<br/><br/>";
+            }
+            else
+            {
+              if (file_exists("../../upload_img/partenaire/" . $_FILES["image"]["name"])) {
+                $msg= $_FILES["image"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
+              }
+              else
+              {
+                $sourcePath = $_FILES['image']['tmp_name']; 
+                $targetPath = "../../upload_img/partenaire/".$_FILES['image']['name']; 
 
-        if($insertion_req_insert_img_partenaire->rowCount()==1){
+                //enregistrement de l'image dans le dossier
+                move_uploaded_file($sourcePath,$targetPath) ; 
+                //Enregistrement de l'image dans la bdd
+                $req_insert_img_partenaire="INSERT INTO `image`(`url_img`, `date_creation_img`) VALUES (:url_img , NOW())";
+                $insertion_req_insert_img_partenaire=$bdd->prepare($req_insert_img_partenaire);
+                $insertion_req_insert_img_partenaire->bindParam(':url_img', $image['name'], PDO::PARAM_STR);
+                $insertion_req_insert_img_partenaire->execute();
 
-          $recuperation_url_img = $recherche_req_unique_img->fetch(PDO::FETCH_ASSOC);
+                
+                //on recherche l'image qui vient d'être créer
+                $recherche_req_unique_img->execute();
 
-          //stock l'id de l'image pour l'enregistrer dans l'actu qui va être créé
-          $id_img_partenaire=$recuperation_url_img['id_img'];//***********
-          // echo $id_img_actu;
+               
+                if($recherche_req_unique_img->rowCount()==1){
+
+                  $recuperation_url_img = $recherche_req_unique_img->fetch(PDO::FETCH_ASSOC);
+
+                  //stock l'id de l'image pour l'enregistrer dans l'actu qui va être créé
+                  $id_img_partenaire=$recuperation_url_img['id_img'];//***********
+                  // echo $id_img_actu;
 
 
-          $req_insert_partenaire="INSERT INTO `partenaire`(`nom_partenaire`, `description_partenaire`, `adresse_partenaire`, `url_partenaire`, `id_image`) VALUES (:nom , :description ,:adresse , :url ,:id_img_partenaire)";
-          $insertion_req_insert_partenaire=$bdd->prepare($req_insert_partenaire);
-          $insertion_req_insert_partenaire->bindParam(':nom', $nom, PDO::PARAM_STR);
-          $insertion_req_insert_partenaire->bindParam(':description', $description, PDO::PARAM_STR);
-          $insertion_req_insert_partenaire->bindParam(':adresse', $adresse, PDO::PARAM_STR);
-          $insertion_req_insert_partenaire->bindParam(':url', $url, PDO::PARAM_STR);
-          $insertion_req_insert_partenaire->bindParam(':id_img_partenaire', $id_img_partenaire, PDO::PARAM_INT);
-          $insertion_req_insert_partenaire->execute();
+                  $req_insert_partenaire="INSERT INTO `partenaire`(`nom_partenaire`, `description_partenaire`, `adresse_partenaire`, `url_partenaire`, `id_image`) VALUES (:nom , :description ,:adresse , :url ,:id_img_partenaire)";
+                  $insertion_req_insert_partenaire=$bdd->prepare($req_insert_partenaire);
+                  $insertion_req_insert_partenaire->bindParam(':nom', $nom, PDO::PARAM_STR);
+                  $insertion_req_insert_partenaire->bindParam(':description', $description, PDO::PARAM_STR);
+                  $insertion_req_insert_partenaire->bindParam(':adresse', $adresse, PDO::PARAM_STR);
+                  $insertion_req_insert_partenaire->bindParam(':url', $url, PDO::PARAM_STR);
+                  $insertion_req_insert_partenaire->bindParam(':id_img_partenaire', $id_img_partenaire, PDO::PARAM_INT);
+                  $insertion_req_insert_partenaire->execute();
 
-          header('location:../partner.php');
+                  header('location:../partner.php?creation=success');
 
-        }
-        else{
-          $msg='Erreur sur la recherche d\'image';
-        }
+                }
+                else{
+                  $msg='Erreur sur la recherche d\'image';
+                }
+
+                
+              }
+              
+            }
+      
+
+          } 
+        
+
+        }////////***********
+
+
+
+        
+
+
 
       }
 
@@ -87,7 +134,7 @@ include "../../inc/menu_2.php";
     <p class="resultat"><?php echo $msg; ?></p>
   </div>
 
-  <form class="form-actu" method="post" action="#">
+  <form class="form-actu" method="post" action="#"  enctype="multipart/form-data">
     <label for="image">Sélectionner une image pour le partenaire *</label>
     <input type="file" name="image">
 

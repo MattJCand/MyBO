@@ -2,7 +2,6 @@
 require_once '../../inc/inc.php';
 
 extract($_GET);
-extract($_FILES);
 
 if(isset($id) && !empty($id)){
     $req_verif_actu="SELECT * FROM actualite a, image i, date d WHERE a.id_image=i.id_img AND a.id_date = d.id_date AND id_actu= :id";
@@ -103,7 +102,7 @@ if(isset($modifier) && $modifier=="Modifier"){
                             else
                             {
 
-                                if (file_exists("../../upload_img/" . $_FILES["img_actu"]["name"])) {
+                                if (file_exists("../../../upload_img/actualite/" . $_FILES["img_actu"]["name"])) {
 
                                     $msg=$_FILES["img_actu"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
                                 }
@@ -111,7 +110,7 @@ if(isset($modifier) && $modifier=="Modifier"){
                                 {
                                     $sourcePath = $_FILES['img_actu']['tmp_name']; // Storing source path of the file in a variable
 
-                                    $targetPath = "../../upload_img/actualite/".$_FILES['img_actu']['name']; // Target path where file is to be stored
+                                    $targetPath = "../../../upload_img/actualite/".$_FILES['img_actu']['name']; // Target path where file is to be stored
                                     move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
                                     
                                     //requete de mise a jour
@@ -174,20 +173,20 @@ require_once "../../inc/menu_2.php";
         <label for="img_actu">Image de l'actu :</label>
         <div class="edit-img-bloc">  
 
-        <img src="../../upload_img/actualite/<?php echo $resultat_req_verif_actu['url_img']; ?>" alt="<?php echo $resultat_req_verif_actu['url_img']; ?>">
+        <img src="../../../upload_img/actualite/<?php echo htmlentities($resultat_req_verif_actu['url_img']); ?>" alt="<?php echo htmlentities($resultat_req_verif_actu['url_img']); ?>">
 
         </div> 
         
         <input type="file" name="img_actu">
 
         <label for="titre_actu">Titre de l'actualité:</label>
-        <input type="text" name="titre_actu" value="<?php echo $resultat_req_verif_actu['titre_actu'];?>">
+        <input type="text" name="titre_actu" value="<?php echo htmlentities($resultat_req_verif_actu['titre_actu']);?>">
 
         <label for="description_actu">Description de l'actualité:</label>
-        <textarea name="description_actu" rows="10" cols="50" ><?php echo $resultat_req_verif_actu['description_actu'];?></textarea>
+        <textarea name="description_actu" rows="10" cols="50" ><?php echo htmlentities($resultat_req_verif_actu['description_actu']);?></textarea>
 
         <label for="url_actu"></label>
-        <input type="text" name="url_actu" value="<?php echo $resultat_req_verif_actu['url_actu'];?>">
+        <input type="text" name="url_actu" value="<?php echo htmlentities($resultat_req_verif_actu['url_actu']);?>">
 
         <div class="btn-form-bloc">
 

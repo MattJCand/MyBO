@@ -35,24 +35,23 @@ require_once "../inc/menu.php";
       <tbody>
         <tr>
           <td class="img_table">
-            <img src="<?php echo $reponse_tableau["url_img"] ?>" alt="<?php echo $reponse_tableau["url_img"] ?>">
+            <img class="img-adapte" src="../upload_img/partenaire/<?php echo htmlentities($reponse_tableau["url_img"]) ?>" alt="<?php echo htmlentities($reponse_tableau["url_img"]) ?>">
           </td>
-          <td class="nom_table"><?php echo $reponse_tableau["nom_partenaire"] ?></td>
-          <td class="description-table description-table-partenaire"><?php echo $reponse_tableau["description_partenaire"] ?></td>
-          <td class="adresse_table"><?php echo $reponse_tableau["adresse_partenaire"] ?></td>
-          <td class="url_table"><a href="https://<?php echo $reponse_tableau["url_partenaire"]; ?>" target="blank" ><?php echo $reponse_tableau["url_partenaire"] ?></a></td>
+          <td class="nom_table"><?php echo htmlentities($reponse_tableau["nom_partenaire"]) ?></td>
+          <td class="description-table description-table-partenaire"><?php echo htmlentities($reponse_tableau["description_partenaire"]) ?></td>
+          <td class="adresse_table"><?php echo htmlentities($reponse_tableau["adresse_partenaire"]) ?></td>
+          <td class="url_table"><a href="https://<?php echo htmlentities($reponse_tableau["url_partenaire"]); ?>" target="blank" ><?php echo htmlentities($reponse_tableau["url_partenaire"]) ?></a></td>
           <td>
-            <a href="partner/edit.php?id=<?php echo $reponse_tableau["id_partenaire"] ?>">
+            <a href="partner/edit.php?id=<?php echo htmlentities($reponse_tableau["id_partenaire"])?>">
               <i class='fas fa-edit'></i>
             </a>
           </td>
           <td>
-            <a href="partner/delete.php?id=<?php echo $reponse_tableau["id_partenaire"]?>">
+            <a href="partner/delete.php?id=<?php echo htmlentities($reponse_tableau["id_partenaire"])?>">
               <i class='fas fa-trash'></i>
             </a>
           </td>
         </tr>
-
   <?php
     }
   ?>

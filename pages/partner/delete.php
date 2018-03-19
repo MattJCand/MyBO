@@ -26,38 +26,41 @@ extract($_POST);
 
 
 if(isset($non) && $non=="Non"){
-	header('location:../actu.php?effacer=non');
+	header('location:../partner.php?effacer=non');
 }
 elseif(isset($oui) && $oui=="Oui"){
 	//on recherche l'id de l'image qui est associe a l'actualite pour la supprimer l'image
-	$req_id_img="SELECT * FROM actualite a, image i WHERE a.id_image = i.id_img AND id_actu= :id";
+	$req_id_img="SELECT * FROM partenaire p, image i WHERE p.id_image = i.id_img AND id_partenaire= :id";
 	$recherche_req_id_img=$bdd->prepare($req_id_img);
 	$recherche_req_id_img->bindParam(':id', $id, PDO::PARAM_INT);
     $recherche_req_id_img->execute();
 
     if($recherche_req_id_img->rowCount()!=1){
-    	header('location:../actu.php?image_actu=introuvable');
+    	header('location:../partner.php?image_partenaire=introuvable');
     }
     else{
-    	$resultat_image_actu=$recherche_req_id_img->fetch(PDO::FETCH_ASSOC);
+    	$resultat_image_partenaire=$recherche_req_id_img->fetch(PDO::FETCH_ASSOC);
 
-    	$id_image_a_supprimer=$resultat_image_actu['id_image'];
+    	$id_image_a_supprimer=$resultat_image_partenaire['id_image'];
+        $url_image_a_supprimer=$resultat_image_partenaire['url_img'];
+
 
     }
     //supression de l'actu
-	$req_delete_actu="DELETE FROM actualite WHERE id_actu= :id";
-	$suppresion_req_delete_actu=$bdd->prepare($req_delete_actu);
-	$suppresion_req_delete_actu->bindParam(':id', $id, PDO::PARAM_INT);
-    $suppresion_req_delete_actu->execute();
+	$req_delete_partenaire="DELETE FROM partenaire WHERE id_partenaire= :id";
+	$suppresion_req_delete_partenaire=$bdd->prepare($req_delete_partenaire);
+	$suppresion_req_delete_partenaire->bindParam(':id', $id, PDO::PARAM_INT);
+    $suppresion_req_delete_partenaire->execute();
 
 
 
     //suppression de l'image
-    $req_delete_img_actu="DELETE FROM `image` WHERE id_img= :id_image_a_supprimer";
-    $suppression_req_delete_img_actu=$bdd->prepare($req_delete_img_actu);
-    $suppression_req_delete_img_actu->bindParam(':id_image_a_supprimer', $id_image_a_supprimer, PDO::PARAM_INT);
-    $suppression_req_delete_img_actu->execute();
+    $req_delete_img_partenaire="DELETE FROM `image` WHERE id_img= :id_image_a_supprimer";
+    $suppression_req_delete_img_partenaire=$bdd->prepare($req_delete_img_partenaire);
+    $suppression_req_delete_img_partenaire->bindParam(':id_image_a_supprimer', $id_image_a_supprimer, PDO::PARAM_INT);
+    $suppression_req_delete_img_partenaire->execute();
 
+    unlink('../../upload_img/partenaire/'.$url_image_a_supprimer);
     header('location:../partner.php?delete=success');
 }
 
